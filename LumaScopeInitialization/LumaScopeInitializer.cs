@@ -16,7 +16,7 @@
 // This code launches the dialog box that initializes the Lumascope board.
 // This code is the interface to the client code, e.g., a C# EXE or a 
 // Python script.
-// This code is part of the EXE project.
+// This code is part of the DLL project.
 //
 // DATE ORIGINALLY CREATED/MODIFIED:
 // Early 2021.
@@ -28,22 +28,40 @@
 
 
 
+using LumaScopeInitialization;
 using System;
-using System.Windows.Forms;
 
-namespace LumaviewMicroscopeBoardInit
+namespace Board_ns
 {
-    static class Program
+    public class LumaScopeInitializer
     {
+
         /// <summary>
-        /// The main entry point for the application.
+        /// Gives build information.
         /// </summary>
-        [STAThread]
-        static void Main()
+        /// <returns>Returns string with the build date and if DEBUG or RELEASE.</returns>
+        static public string version()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            DateTime buildDate = DateTime.Now;
+
+#if DEBUG
+            String buildType = "DEBUG";
+#else
+            String buildType = "RELEASE";
+#endif
+
+            return "Version: " + buildDate.ToString() + ", buildType: " + buildType;
+        }
+
+
+        /// <summary>
+        /// Launches the initialization dialog box.
+        /// </summary>
+        /// <param name="autoClose">If true, specifies that this dialog closed when the board has completed initializing.</param>
+        static public void launchInitDialog(bool autoClose = false)
+        {
+            InitializerForm usbMsgForm = new InitializerForm(autoClose);
+            usbMsgForm.ShowDialog();
         }
     }
 }
