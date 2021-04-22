@@ -1,0 +1,10 @@
+Notes on the Python Script
+
+The associated Python scripts was developed with Python version 3.6.
+In order to get this script to function, you will need the following
+files in the same directory as this script:
+* Lumascope600.hex
+* LumaScopeInitialization.dll
+* LumaUSB.dll
+
+In the script, there are numerous useful notes.

@@ -12,9 +12,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LumaScopeInitialization", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Python_Script", "Python_Script", "{49572F20-61ED-413D-BBA5-E90855DDA557}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\PycharmProjects\testCommonLanguageRuntime\main.py = ..\..\..\PycharmProjects\testCommonLanguageRuntime\main.py
+		main.py = main.py
 		PythonDescription.txt = PythonDescription.txt
-		..\..\..\PycharmProjects\testCommonLanguageRuntime\requirements.txt = ..\..\..\PycharmProjects\testCommonLanguageRuntime\requirements.txt
+		requirements.txt = requirements.txt
 	EndProjectSection
 EndProject
 Global

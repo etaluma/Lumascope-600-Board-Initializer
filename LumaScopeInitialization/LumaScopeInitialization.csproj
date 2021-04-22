@@ -67,4 +67,8 @@
   <PropertyGroup>
     <PostBuildEvent>copy LumascopeInitialization.dll C:\Users\EtalumaDemo3\PycharmProjects\testCommonLanguageRuntime</PostBuildEvent>
   </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>
