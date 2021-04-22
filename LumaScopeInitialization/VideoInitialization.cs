@@ -51,9 +51,13 @@ namespace LumaScopeInitialization
         public const int DEFAULT_GAIN = 50;
 
 
-        /// <summary>Initializes the image sensor by sending commands to the LumaScope.</summary>
-        /// 
-        public static bool initializeImageSensor(LumaUSB lumaUsbObj, out string errorMessage)
+        /// <summary>
+        /// Initializes the image sensor by sending commands to the LumaScope.
+        /// </summary>
+        /// <param name="lumaUsbObj">This is a pointer to the object for configuring the board.</param>
+        /// <param name="resultMsg">This gets set to a success or failure message.</param>
+        /// <returns>Returns 'true' is success, otherwise 'false'.</returns>
+        public static bool initializeImageSensor(LumaUSB lumaUsbObj, out string resultMsg)
         {
             Debug.Assert(null != lumaUsbObj);
 
@@ -64,27 +68,27 @@ namespace LumaScopeInitialization
 
             if (false == lumaUsbObj.ImageSensorRegisterWrite(u16RegisterID, (UInt16)videoParams.width))
             {
-                errorMessage = "Failed to write to the image sensor 'Shutter Width Lower' register!";
-                Trace.WriteLine(errorMessage);
+                resultMsg = "Failed to write to the image sensor 'Shutter Width Lower' register!";
+                Trace.WriteLine(resultMsg);
                 return false;
             }
             else
             {
-                errorMessage = string.Format("Set image sensor 'Shutter Width Lower' (exposure) register to {0}", (UInt16)videoParams.width);
-                Trace.WriteLine(errorMessage);
+                string msg = string.Format("Set image sensor 'Shutter Width Lower' (exposure) register to {0}", (UInt16)videoParams.width);
+                Trace.WriteLine(msg);
             }
 
 
             if (false == lumaUsbObj.SetWindowSize(videoParams.width, videoParams.height))
             {
-                errorMessage = "Failed to write to the image sensor 'Shutter Width Lower' register!";
-                Trace.WriteLine(errorMessage);
+                resultMsg = "Failed to write to the image sensor 'Shutter Width Lower' register!";
+                Trace.WriteLine(resultMsg);
                 return false;
             }
             else
             {
-                errorMessage = string.Format("Set image sensor window size to {0} x {1}.", videoParams.width, videoParams.height);
-                Trace.WriteLine(errorMessage);
+                string msg = string.Format("Set image sensor window size to {0} x {1}.", videoParams.width, videoParams.height);
+                Trace.WriteLine(msg);
             }
 
 
@@ -102,18 +106,19 @@ namespace LumaScopeInitialization
             // and set the default value to maximum.
             if (false == lumaUsbObj.ImageSensorRegisterWrite(LumaUSB.IMAGE_SENSOR_SHUTTER_WIDTH_LOWER, LumaUSB.MAX_IMAGE_SENSOR_EXPOSURE))
             {
-                MessageBox.Show("Exposure failed to update.");
-                errorMessage = "Failed to write to the image sensor 'Shutter Width Lower' register!";
-                Trace.WriteLine(errorMessage);
+                resultMsg = "Failed to write to the image sensor 'Shutter Width Lower' register!";
+                Trace.WriteLine(resultMsg);
                 return false;
             }
             else
             {
-                errorMessage = string.Format("Set image sensor 'Shutter Width Lower' (exposure) register to {0}", LumaUSB.MAX_IMAGE_SENSOR_EXPOSURE);
-                Trace.WriteLine(errorMessage);
+                string msg = string.Format("Set image sensor 'Shutter Width Lower' (exposure) register to {0}", LumaUSB.MAX_IMAGE_SENSOR_EXPOSURE);
+                Trace.WriteLine(msg);
             }
 
             Thread.Sleep(200); // TODO: document why the delay.  From Aptina?
+
+            resultMsg = "Successfully initialized the Aptina sensor.";
 
             return true;
         }

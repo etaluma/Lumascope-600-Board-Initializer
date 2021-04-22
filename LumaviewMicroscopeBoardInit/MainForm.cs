@@ -102,6 +102,8 @@ namespace LumaviewMicroscopeBoardInit
         {
             if (true == PollingInitialization.isLScopeConnected())
             {
+#if false
+                // TODO : remove?
                 bool uninitializedBoardConnected;
                 bool initializedBoardConnected;
 
@@ -114,7 +116,19 @@ namespace LumaviewMicroscopeBoardInit
                         setControlsToBoardInitializedState();
                     }
                 }
+                
+#else
+                if (true == PollingInitialization.initializeLumaUsbObject())
+                {
+                    this.usb = new LumaUSB(LumaUSB.VID_CYPRESS, LumaUSB.PID_LSCOPE, this.videoParams);
+
+                    if (true == PollingInitialization.isLScopeConnected())
+                    {
+                        setControlsToBoardInitializedState();
+                    }
+                }
             }
+#endif
         }
 
 
@@ -165,12 +179,18 @@ namespace LumaviewMicroscopeBoardInit
         private void pollingBasedInitButton_Click(object sender, EventArgs e)
         {
             // Launch the TIMER for indicating status.
+
+#if false
+            // TODO: Remove?
+            
             bool uninitializedBoardConnected;
             bool initializedBoardConnected;
 
             bool result = PollingInitialization.initializeLumaUsbObject(out uninitializedBoardConnected, out initializedBoardConnected);
-
-            if(true == result)
+#else
+            bool result = PollingInitialization.initializeLumaUsbObject();
+#endif
+            if (true == result)
             {
                 timer1.Enabled = true;
                 pollingProgressBar.Value = 0;

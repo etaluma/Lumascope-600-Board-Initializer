@@ -76,6 +76,40 @@ namespace LumaScopeInitialization
         /// Also, the board must be uninitialized in order to return true.
         /// A board also must be connected in order to return true.
         /// </returns>
+
+#if true
+
+        static public bool initializeLumaUsbObject()
+        {
+            bool initializationStarted = false;
+
+            VideoParameters videoParams = VideoParametersFactory.getVideoParameters();
+            KLST_DEVINFO_HANDLE deviceInfo = new KLST_DEVINFO_HANDLE();
+
+
+            if (true == searchForDevice(LumaUSB.PID_FX2_DEV, ref deviceInfo))
+            {
+                LumaUSB lumaUsb = new LumaUSB(LumaUSB.VID_CYPRESS, LumaUSB.PID_LSCOPE, videoParams);
+                lumaUsb.DeviceAdded(deviceInfo);
+                initializationStarted = true;
+            }
+            else if (true == searchForDevice(LumaUSB.PID_LSCOPE, ref deviceInfo))
+            {
+                LumaUSB lumaUsb = new LumaUSB(LumaUSB.VID_CYPRESS, LumaUSB.PID_LSCOPE, videoParams);
+                //Globals.lumaUsb.DeviceAdded(deviceInfo); ***** Calling 'DeviceAdded() here causes exceptions when starting video streaming *****
+                initializationStarted = true;
+            }
+            else
+            {
+                Trace.WriteLine("ERROR - Can't initialize LumaUSB object.");
+            }
+
+            return initializationStarted;
+        }
+
+#else
+
+        // TODO : remove?
         static public bool initializeLumaUsbObject(out bool uninitializedBoardConnected, out bool initializedBoardConnected)
         {
             bool initializationStarted = false;
@@ -107,7 +141,7 @@ namespace LumaScopeInitialization
 
             return initializationStarted;
         }
-
+#endif
 
         /// <summary>
         /// Call this function to see if the computer is connected to a Lumascope.
@@ -245,4 +279,4 @@ namespace LumaScopeInitialization
     }
 #endif
 
-}
+    }
