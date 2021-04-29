@@ -68,7 +68,7 @@ namespace LumaviewMicroscopeBoardInit
         // These are a parameter to be passed to this function:
         // LumaUSB.LedControllerWrite( XXX_LED_ID, brightness);,
         // where the 'brightness' range is 0 to 255.
-        byte BF_LED_ID = (byte)'D';
+        //byte BF_LED_ID = (byte)'D';
         byte BLUE_LED_ID = (byte)'C';
         byte GREEN_LED_ID = (byte)'B';
         byte RED_LED_ID = (byte)'A';

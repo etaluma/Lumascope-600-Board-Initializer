@@ -1,0 +1,3117 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LumaUSB</name>
+    </assembly>
+    <members>
+        <member name="F:LumaUSB_ns.MT9P031_Const.AptinaPixelClockSettings">
+            <summary>
+            These are the allowed values for the pixel clock.
+            </summary>
+        </member>
+        <member name="F:LumaUSB_ns.MT9P031_Const.AptinaPixelClockTextValues">
+            <summary>
+            This array holds all of the frequencies to which we can set the Aptina PLL (pixel clock).
+            These values map to 'MT9P031_Const.AptinaPixelClockSettings[]' settings in the same
+            index order.
+            </summary>
+        </member>
+        <member name="F:LumaUSB_ns.MT9P031_Const.ExposureMultiplier">
+            <summary>
+            This array holds the row time multiplier values for the exposure time calculation.
+            These values, calculated from measured frame rates, correspond to tROW in the Aptina Documentation
+            These values map to 'MT9P031_Const.AptinaPixelClockSettings[]' settings in the same
+            index order.
+            </summary>
+        </member>
+        <member name="F:LumaUSB_ns.I2C_Control.REQ_HOST_TO_DEVICE">
+            <Summary>Direction from Host to Device. 0xxxxxxx See \ref USB_REQUEST_ENUM</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.I2C_Control.REQ_STANDARD">
+            <Summary>Type Standard request. x00xxxxx See \ref USB_REQUEST_ENUM</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.I2C_Control.REQ_CLASS">
+            <Summary>Type Class-specific request. x01xxxxx</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.I2C_Control.REQ_VENDOR">
+            <Summary>Type Vendor-specific request x10xxxxx</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.I2C_Control.REQ_DEVICE">
+            <Summary>Recipient is for a device. xxx0000</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.I2C_Control.REQ_INTERFACE">
+            <Summary>Recipient is for an interface of a device. xxx0001</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.I2C_Control.REQ_ENDPOINT">
+            <Summary>Recipient is for an endpoint of a device. xxx0010</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.I2C_Control.REQ_OTHER">
+            <Summary>Recipient is for a vendor-specific purpose. xxx0011</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.KUsbClass.REQ_HOST_TO_DEVICE">
+            <Summary>Direction from Host to Device. 0xxxxxxx See \ref USB_REQUEST_ENUM</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.KUsbClass.REQ_STANDARD">
+            <Summary>Type Standard request. x00xxxxx See \ref USB_REQUEST_ENUM</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.KUsbClass.REQ_CLASS">
+            <Summary>Type Class-specific request. x01xxxxx</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.KUsbClass.REQ_VENDOR">
+            <Summary>Type Vendor-specific request x10xxxxx</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.KUsbClass.REQ_DEVICE">
+            <Summary>Recipient is for a device. xxx0000</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.KUsbClass.REQ_INTERFACE">
+            <Summary>Recipient is for an interface of a device. xxx0001</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.KUsbClass.REQ_ENDPOINT">
+            <Summary>Recipient is for an endpoint of a device. xxx0010</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.KUsbClass.REQ_OTHER">
+            <Summary>Recipient is for a vendor-specific purpose. xxx0011</Summary>
+        </member>
+        <member name="M:LumaUSB_ns.KUsbClass.StartStreaming">
+            <summary>Starts the image data streaming on the LumaScope.</summary>
+            <returns>True if the LumaScope was successfully commanded.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.KUsbClass.StopStreaming">
+            <summary>Stops the image data streaming on the LumaScope.</summary>
+            <returns>True if the LumaScope was successfully commanded.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.KUsbClass.GetFx2FirmwareVersion(System.Int16@)">
+            <summary>Reads the FX2 89051 firmware version from the LumaScope.</summary>
+            <returns>True if the LumaScope was successfully commanded.</returns>
+        </member>
+        <member name="T:LumaUSB_ns.LumaUSB">
+            <summary>
+            This class provides the interface for communicating with the LumaScope 600,
+            which includes receiving image data, image sensor configuration, LED toggling, etc.
+            </summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.REQ_STANDARD">
+            <Summary>Type Standard request. x00xxxxx See \ref USB_REQUEST_ENUM</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.REQ_CLASS">
+            <Summary>Type Class-specific request. x01xxxxx</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.REQ_VENDOR">
+            <Summary>Type Vendor-specific request x10xxxxx</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.REQ_DEVICE">
+            <Summary>Recipient is for a device. xxx0000</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.REQ_INTERFACE">
+            <Summary>Recipient is for an interface of a device. xxx0001</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.REQ_ENDPOINT">
+            <Summary>Recipient is for an endpoint of a device. xxx0010</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.REQ_OTHER">
+            <Summary>Recipient is for a vendor-specific purpose. xxx0011</Summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.PID_LSCOPE">
+            <summary>This is the USB 'Product ID' of the LumaScope 600.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.VID_CYPRESS">
+            <summary>This is the USB 'Vendor ID' of the Cypress FX2 chip in the LumaScope 600.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.PID_FX2_DEV">
+            <summary>This is the USB 'Product ID' of the Cypress FX2 chip in the  LumaScope 600.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.IMAGE_SENSOR_SHUTTER_WIDTH_LOWER">
+            <summary>This is a register of the Aptina image sensor, 'Shutter Width Lower'.  See 'MT9P031_RR_A.pdf'.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.IMAGE_SENSOR_RESET">
+            <summary>This is a register of the Aptina image sensor, 'Reset'.  See 'MT9P031_RR_A.pdf'.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.IMAGE_SENSOR_GLOBAL_GAIN">
+            <summary>This is a register of the Aptina image sensor, 'Global Gain'.  See 'MT9P031_RR_A.pdf'.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.IMAGE_SENSOR_GREEN1_GAIN">
+            <summary>This is a register of the Aptina image sensor, 'Green Gain1'.  See 'MT9P031_RR_A.pdf'.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.IMAGE_SENSOR_BLUE_GAIN">
+            <summary>This is a register of the Aptina image sensor, 'Blue Gain'.  See 'MT9P031_RR_A.pdf'.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.IMAGE_SENSOR_RED_GAIN">
+            <summary>This is a register of the Aptina image sensor, 'Red Gain'.  See 'MT9P031_RR_A.pdf'.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.IMAGE_SENSOR_GREEN2_GAIN">
+            <summary>This is a register of the Aptina image sensor, 'Green Gain2'.  See 'MT9P031_RR_A.pdf'.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.MAX_IMAGE_SENSOR_EXPOSURE">
+            <summary>
+            This is the Aptina "Shutter Width Lower" register used for exposure.  1943 is the Aptina default value.
+            </summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.MAX_GLOBAL_GAIN_PARAMETER_VALUE">
+            <summary>
+            This specifies the maximum value for the gain parameter in the 'SetGlobalGain()'.
+            </summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.RECOMMENDED_MIN_GLOBAL_GAIN_PARAMETER_VALUE">
+            <summary>
+            This specifies the true minimum recommended value for the gain parameter in the 'SetGlobalGain()'.
+            With the gain code modification, it is empirically observered that the image sensor saturates at sufficient
+            intensity of the light source. Eric's previous observations were due to undocumented global gain register words passed to the sensor
+            </summary>
+        </member>
+        <member name="P:LumaUSB_ns.LumaUSB.HexPath">
+            <summary>
+            Gets and sets the full file path of the location of the HEX files that 
+            gets loaded into the 8051 of the Cypress FX2 USB chip on the LumaScope.
+            </summary>
+        </member>
+        <member name="P:LumaUSB_ns.LumaUSB.ProductID">
+            <summary>
+            Returns the USB product ID of the initialized (HEX file already downloaded) LumaScope 600.
+            </summary>
+        </member>
+        <member name="P:LumaUSB_ns.LumaUSB.VendorID">
+            <summary>
+            Returns the USB vendor ID of the uninitialized/initialized (same for both) LumaScope 600.
+            </summary>
+        </member>
+        <member name="P:LumaUSB_ns.LumaUSB.ProductName">
+            <summary>
+            Returns a string containing the name of the product, 'LS600'.
+            </summary>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor, initializes the USB and sets the PID and VID (USB product and vendor IDs).
+            </summary>
+            <param name="vid">USB vendor ID.</param>
+            <param name="pid">USB product ID.</param>
+            <param name="frameWidthPixels">Specifies the width of the image, in pixels.</param>
+            <param name="frameHeightPixels">Specifies the height of the image, in pixels.</param>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.#ctor(System.Int32,System.Int32,LumaUSB_ns.VideoParameters)">
+            <summary>
+            Constructor, initializes the USB and sets the PID and VID 
+            (USB product and vendor IDs) and the video parameters.
+            </summary>
+            <param name="vid">USB vendor ID.</param>
+            <param name="pid">USB product ID.</param>
+            <param name="vp">
+            Video parameters.  NOTE: 'vp.width' and 'vp.height' both must be multiples of four.
+            </param>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.Finalize">
+            <summary>
+            Destructor.
+            </summary>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.Dispose">
+            <summary>
+            Standard disposal pattern.
+            </summary>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.Dispose(System.Boolean)">
+            <summary>
+            Overloaded method.  See Microsoft documentation.
+            </summary>
+            <param name="disposing">See Microsoft documentation.</param>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GetLatest24bppBuffer(System.Byte[]@)">
+            <summary>
+            Gets image data that was received from the LumaScope.
+            The data is 24 bits per pixel.
+            </summary>
+            <param name="buffer">The buffer is filled with image data if there is data available.</param>
+            <returns>True if there was data available and the parameter was filled.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.ISOStreamStart">
+            <summary>
+            The user must call this to start the USB image data streaming.
+            </summary>
+            <returns>True is successfully started, else false.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.ISOStreamStop">
+            <summary>
+            The counter-call to 'ISOStreamStart()', call this function to stop the image data streaming.
+            </summary>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GetNumBytesReceived(System.UInt64@)">
+            <summary>
+            Gets the cumulative number of image data bytes received from the LumaScope
+            since starting or calling 'ResetNumBytesReceived()'.
+            </summary>
+            <param name="numBytesReceived">This parameter gets set to the number of received bytes.</param>
+            <returns>True if the function is successfully able to get the data byte count.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.ResetNumBytesReceived">
+            <summary>
+            Sets the cumulative image data byte count back to zero.
+            Note: get the cumulative byte count by calling 'GetNumBytesReceived()'.
+            </summary>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.SetPipeTimeout(System.Int32)">
+            <summary>
+            Sets the USB image data "pipe" timeout.
+            </summary>
+            <param name="pipeTimeoutMilliseconds">The desired timeout, in milliseconds.</param>
+            <returns>True is the timeout was set, else false.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GetDeviceInfo(libusbK.KLST_DEVINFO_HANDLE@)">
+            <summary>
+            Search all detected devices and get matching VID/PID device's device info.
+            </summary>
+            <param name="deviceInfo">Reference to device information, which gets set during the call.</param>
+            <returns>True if information successful retrieved, false if not.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GetPipeInfo(libusbK.WINUSB_PIPE_INFORMATION@)">
+            <summary>
+            Get pipe info for selected device.
+            </summary>
+            <param name="pipeInfo">Reference to pipe, which gets set during the call.</param>
+            <returns>True if information successful retrieved, false if not.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GetDeviceDescriptionList">
+            <summary>
+            Gets a list of the connected LumaScope USB devices.
+            </summary>
+            <returns>A textual list connected USB devices.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.HexFileDownload">
+            <summary>The HexFileDownload function.</summary>
+            <returns>void</returns>
+            <remarks>See the Cypress EZUSB Technical Reference Manual, 
+             Section 3.8 EZ-USB Vendor Request for Firmware Load.</remarks>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.HexLineParse(System.String)">
+            <summary>
+            This is called from the 'HexFileDownload()' function to parse a line in 
+            the HEX file used for the 8051 microcontroller in the FX2 chip on the LumaScope.
+            </summary>
+            <returns>void.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.DeviceAdded(libusbK.KLST_DEVINFO_HANDLE)">
+            <summary>The application using this DLL calls this function when the USB device is connected to the LumaScope.</summary>
+            <param name='deviceInfo'>Structure containing information about the USB device of interest.</param>
+            <returns>void.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.LedControllerWrite(System.Byte,System.Byte)">
+            <summary>Sets the brightness level of the specified LED.</summary>
+            <param name='ledId'>
+            Selects the LED: LED-A = 0x41 = 'A', LED-B = 0x42 = 'B', LED-C = 0x43 = 'C', LED-D = 0x44 = 'D'.
+            See "EtaLuma Comm Protocol, Main-Periph.rev12.doc".
+            </param>
+            <param name='brightness'>Specifies the brightness of the LED (range: 0 to 255).</param>
+            <returns>True if successful write.</returns>
+            
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GetPixelClockDescription(System.Int32)">
+             <summary>
+             This returns a textual frequency of the Aptina pixel clock corresponding to the index passed as the parameter.
+             </summary>
+             <param name="speed">This is the index that specifies the frequency.  
+             The range of this parameter is from zero to one less that what 'GetPixelClockDescriptionCount()' returns.
+            </param>
+             <returns>Returns the frequency in text form.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GetPixelClockDescriptionCount">
+            <returns>
+            Returns the number of the possible frequencies to which we may set the Aptina image sensor pixel clock.
+            </returns>
+            <returns>Returns the length of the string array elements.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.SetImageSensorPixelClockFrequency(System.Int32)">
+            <summary>
+            Sets the pixel clock frequency on the Aptina image sensor chip on the LumaScope, 
+            which is the same as selecting the image scanning frequency.
+            </summary>
+            <param name='speed'>
+            This is the zero-based index corrsponding to what is returned from 'GetPixelClockDescription()'.
+            The range of the 'speed' is from zero to one less than what 'GetPixelClockDescriptionCount()' returns.
+            </param>
+            <returns>Returns true if successfully set.</returns>        
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.ImageSensorRegisterWrite(System.UInt16,System.UInt16)">
+            <summary>
+            Sets an Aptina image sensor register to the parameter-specified value.  
+            See 'MT9P031_RR_A.pdf' for details about the Aptina MT9P031 registers.
+            </summary>
+            <param name='registerId'>Specifies the register to set.</param>
+            <param name='value'>Contains the value to write to the register.</param>
+            <returns>True if the value was successfully set in the register.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.SetExposure(System.UInt16)">
+            <summary>
+            This call sets the exposure to the image sensor.
+            </summary>
+            <param name="exposure">
+            This is the value can range from 0 to MAX_IMAGE_SENSOR_EXPOSURE in unitless value, this is not in milliseconds.
+            The higher the value, the higher the exposure.
+            </param>
+            <returns>True if the 'exposure' value was successfully set.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GetExposureMultiplierText(System.Int32,System.Int32)">
+            <summary>
+            Returns the formatted text string for the actual exposure time in milliseconds.
+            </summary>
+            <param name="clockSpeedIndex">
+            This is the index parameter that is passed to the 'SetImageSensorPixelClockFrequency()' function.
+            </param>
+            <param name="rowtime">
+            Time needed to scan a row.  This parameter is the value that is written to the following function:
+            LumaUSB.ImageSensorRegisterWrite( LumaUSB.IMAGE_SENSOR_SHUTTER_WIDTH_LOWER, ***VALUE*** )
+            This is the unitless exposure value that ranges from 0 to MAX_IMAGE_SENSOR_EXPOSURE.
+            </param>
+            <returns>Formatted text value of the exposure time, in milliseconds.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.ExposureTimeMilliseconds(System.Int32,System.Int32)">
+            <summary>
+            Calculates the actual exposure time in milliseconds.
+            </summary>
+            <param name="clockSpeedIndex">
+            This is the index parameter that is passed to the 'SetImageSensorPixelClockFrequency()' function.
+            </param>
+            <param name="rowtime">
+            Time needed to scan a row.  This parameter is the value that is written to the following function:
+            LumaUSB.ImageSensorRegisterWrite( LumaUSB.IMAGE_SENSOR_SHUTTER_WIDTH_LOWER, ***VALUE*** )
+            This is the unitless exposure value that ranges from 1 to MAX_IMAGE_SENSOR_EXPOSURE.
+            </param>
+            <returns>Exposure time, in milliseconds.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GainMultiplier(System.UInt16)">
+            <summary>
+            Calculates the gain multiplier value from the control index for image naming
+            <param name="value">This is the slider or up/down control index for the gain</param>
+            </summary>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GetExposureMultiplier(System.Int32)">
+            <summary>
+            Returns the exposure time multiplier appropriate to the pixel clock speed. Needed for ConvertExposureTextToInt32()
+            </summary>
+            <param name="clock_speed">Index for the 'ExposureMultiplier' double array.</param>
+            <returns>Exposure time multiplier.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.ImageSensorRegisterRead(System.UInt16,System.UInt16@)">
+            <summary>
+            Reads an Aptina image sensor register from the parameter-specified value.  
+            See 'MT9P031_RR_A.pdf' for details about the Aptina MT9P031 registers.
+            </summary>
+            <param name='registerId'>Specifies the register to read.</param>
+            <param name='value'>Contains the value to read from the register.</param>
+            <returns>True if the value was successfully read from the register.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.SetGlobalGain(System.UInt16)">
+            <summary>
+            This function sets the gain of the image sensor. This function handles the complexity of the sensor's
+            gain system, which is made from several interacting components. See the data sheet
+            for details of the Aptina MT9P031 sensor.
+            </summary>
+            <param name='value'>Gain setting. Min=1. Max=161.</param>
+            <returns>True if gain set successfully.</returns>  
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GetGainMultiplierText(System.UInt16)">
+            <summary>
+            Returns gain multiplier value as formatted text for index. Output is in range 1 to 128.
+            </summary>
+            <param name="value">Gain value to map to output range. Min=1. Max=161.</param>
+            <returns>Multiplier value.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.InitImageSensor">
+            <summary>
+            This initializes the image sensor to reasonable, default settings.
+            </summary>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.InitBLC">
+            <summary>
+            This sets black level control registers 0x62 Black Level Calibration to 0x6000 to enable automatic determination
+            of GREEN1, GREEN2, RED, and BLUE analog offsets at LumaView launch according to the sensor gain setting,
+            0x20 Read Mode 2 to 0x0040 to enable automatic digital offsetting, and 0x49 Row Black Target set to 0x0000.
+            This is has been empirically determined to eliminate the 10 unit brightness offset of unilluminated 'black' images.
+            </summary>
+            <returns> 'true' if the registers were successfully written, false if not.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.SetWindowSize(System.Int32,System.Int32)">
+            <summary>
+            This sets to the image sensor window to the size, in pixels, as specified by the parameters.
+            </summary>
+            <param name="width">Image window width, in pixels.</param>
+            <param name="height">Image window height, in pixels.</param>
+            <returns>'true' if the image window size successfully set, false if not.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.SetWindowSize(System.Int32)">
+            <summary>
+            This sets to the image sensor window to a square size, in pixels, as specified by the parameter.
+            </summary>
+            <param name="pixelCountSide">Image window width and height, in pixels.</param>
+            <returns>'true' if the image window size successfully set, false if not.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.StartStreaming">
+            <summary>Starts the image data streaming on the LumaScope.</summary>
+            <returns>True if the LumaScope was successfully commanded.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.StopStreaming">
+            <summary>Stops the image data streaming on the LumaScope.</summary>
+            <returns>True if the LumaScope was successfully commanded.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.GetFx2FirmwareVersion(System.Int16@)">
+            <summary>Reads the FX2 8051 firmware version from the LumaScope.</summary>
+            <param name="firmwareVersionWord">This gets filled with the firmware version.</param>
+            <returns>True if the LumaScope was successfully commanded.</returns>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.InitializeGPIF">
+            <summary>
+            Initializes/resets the GPIF LumaScope.
+            It is necessary to reset the GPIF on the FX2 USB chip on the LumaScope after changing the pixel clock.
+            </summary>
+            <returns>True if the LumaScope was successfully commanded.</returns>
+        </member>
+        <member name="T:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT">
+            <summary>DEVICE_DESCRIPTOR
+             This is a USB struct.  We recommend that users do not directly use this class.
+             <code>
+             {
+             byte         u8Length;          // 18
+             byte         u8DescriptorType;  //  1
+             ushort       bcdUSB;
+             byte         u8DeviceClass;
+             byte         u8DeviceSubClass;
+             byte         u8DeviceProtocol;
+             byte         u8MaxPacketSize0;
+             ushort       u16VendorID;
+             ushort       u16ProductID;
+             ushort       bcdRelease;
+             byte         u8ManufacturerIX;
+             byte         u8ProductIX;
+             byte         u8SerialNumberIX;
+             byte         u8NumConfigurations;
+             }
+            </code>
+            </summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u8Length">
+            <summary>The length in bytes of this descriptor structure</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u8DescriptorType">
+            <summary>The standard USB descriptor Type ID</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.bcdUSB">
+            <summary>The version in bcd of USB protocol supported. (descriptor compliance level)</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u8DeviceClass">
+            <summary>If 0 each interface specifies it own class info. 1 - 0xFE different
+            class specifications. 0xFF class is vendor specific.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u8DeviceSubClass">
+            <summary>if DeviceClass == 0, this must be 0, else specified by USB-IF.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u8DeviceProtocol">
+            <summary>If set to 0xFF vendor-specific protocal is used, else class specific protocol.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u8MaxPacketSize0">
+            <summary>Maximum packet size for endpoint zero (only 8, 16, 32, or 64 valid.)</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u16VendorID">
+            <summary>Assigned by USB-IF.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u16ProductID">
+            <summary>Assigned by manufacturer.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.bcdRelease">
+            <summary>Device release number in bcd.</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u8ManufacturerIX">
+            <summary>If not 0, index of the manufacturer String descriptor structure</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u8ProductIX">
+            <summary>If not 0, index of the product String descriptor structure</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u8SerialNumberIX">
+            <summary>If not 0, index of the serial number String descriptor structure</summary>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.u8NumConfigurations">
+            <summary>Number of configurations this USB device supports</summary>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB.DEVICE_DESCRIPTOR_STRUCT.ByteArrayTranslate(System.Byte[])">
+            <summary>
+            This function call copies the contensts of the parameter into this struct.
+            </summary>
+            <param name="au8Buff">A buffer that contains the parameters of this class.</param>
+        </member>
+        <member name="F:LumaUSB_ns.LumaUSB_UtilityForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB_UtilityForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LumaUSB_ns.LumaUSB_UtilityForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LumaUSB_ns.TestForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LumaUSB_ns.TestForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LumaUSB_ns.TestForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LumaUSB_ns.Test_ImageDataReceiver.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LumaUSB_ns.Test_ImageDataReceiver.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LumaUSB_ns.Test_ImageDataReceiver.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LumaUSB_ns.Test_ImageDataSender.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LumaUSB_ns.Test_ImageDataSender.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LumaUSB_ns.Test_ImageDataSender.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:LumaUSB_ns.VideoParameters">
+            <summary>
+            This class contains parameters for the video images from the LumaScope.
+            The members are needed for initialzation.
+            </summary>
+        </member>
+        <member name="P:LumaUSB_ns.VideoParameters.frameDelimiter">
+            <summary>
+            This specifies that byte sequence that marks the division between image frames.
+            We recommend not changing it and using the default.
+            </summary>
+        </member>
+        <member name="P:LumaUSB_ns.VideoParameters.width">
+            <summary>This gets and sets the width, in pixels, of the image frame.</summary>
+        </member>
+        <member name="P:LumaUSB_ns.VideoParameters.height">
+            <summary>This gets and sets the height, in pixels, of the image frame.</summary>
+        </member>
+        <member name="T:EtalumaStage.StageController">
+            <summary>
+            This is the version to use with the Etaluma-designed stage.
+            This class provides the interface to the application user
+            for controlling the x, y and z axes.
+            Note that the z-axis is the focus.
+            
+            One of the requirements is to not allow x- and y-axis movement 
+            when the Lumascope 720 deck-lid is open, but the z-axis is permitted to move
+            when the Lumascope 720 deck-lid is open.  The functions that move the 
+            x- and y-axis will throw a 'SystemException' when the deck-lid is open.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.CalibrationOffsetX">
+            <summary>
+            Offset in x direction added to certain move and get commands. This is noted in the summary of those commands.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.CalibrationOffsetY">
+            <summary>
+            Offset in y direction added to certain move and get commands. This is noted in the summary of those commands.
+            </summary>
+        </member>
+        <member name="F:EtalumaStage.StageController.Z_MM_PER_MICROSTEP">
+            <summary>
+            Millimeters per z motor microstep.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.xHomePositionMillimeters">
+            <summary>
+            This returns the "home" position of the x-axis of the stage.
+            The home position is where the upper-left corner of a microplate
+            would be directly over the center of the objective lens.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.yHomePositionMillimeters">
+            <summary>
+            This returns the "home" position of the y-axis of the stage.
+            The home position is where the upper-left corner of a microplate
+            would be directly over the center of the objective lens.
+            </summary>
+        </member>
+        <member name="F:EtalumaStage.StageController.Z_MAX_TRAVEL_MILLIMETERS">
+            <summary>
+            ---- This is the maximum that the Z-axis is able to travel to get to the limits -----
+            Z cannot be less than zero.
+            This is the maximum "up" position.  Derived empirically for the January 2014 stage version.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.comPortName">
+            <summary>
+            The name of the port to which we connect to the x/y/z stage controller board, e.g., "COM5".
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.comPortDescription">
+            <summary>
+            The description of the port to which we connect to the x/y/z stage controller board.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.xyDefaultMaximumPositioningSpeed">
+            <summary>
+            The default (initial) speed to position the x and y axes.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.xyDefaultMaximumAcceleration">
+            <summary>
+            The default (initial) acceleration to position the x and y axes.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.xyLowerMaximumPositioningVelocity">
+            <summary>
+            The lower limit of the maximum velocity used when executing a ramp to a position for the x and y axes.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.xyUpperMaximumPositioningVelocity">
+            <summary>
+            The upper limit of the maximum velocity used when executing a ramp to a position for the x and y axes.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.xyLowerMaximumAcceleration">
+            <summary>
+            The lower limit of the maximum acceleration used to accelerate or decelerate the motor for the x and y axes.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.xyUpperMaximumAcceleration">
+            <summary>
+            The upper limit of the maximum acceleration used accelerate or decelerate the motor for the x and y axes.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.xMaximumAxisTravelMicrosteps">
+            <summary>
+            This specifies the maximum distance that the x-axis can move, in microsteps.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.yMaximumAxisTravelMicrosteps">
+            <summary>
+            This specifies the maximum distance that the x-axis can move, in microsteps.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.zMaximumAxisTravelMicrosteps">
+            <summary>
+            This specifies the maximum distance that the x-axis can move, in microsteps.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.StageController.enableDeckLidPositionSensing">
+            <summary>
+            The 720 has a switch that detects if the deck lid is
+            open or close.  The default (true) is to block commands
+            to the Trinamic board if the deck lid is open.
+            Set this to false to disable the blocking of commands
+            sent to the Trinamic board.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.StageController.StartLogger(System.String)">
+            <summary>
+            This starts a logger that records serial COM traffic with the motor controller.
+            </summary>
+            <param name="logPath">A complete file spec, including path and file name. 
+            The actual file names used for logging are based on the file name passed to this function,
+            but they are not identical.
+            Folders must exist before calling this function. It does not create folders. 
+            This argument must not be an empty string nor null.</param>
+            <returns>True if logger started. False otherwise.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.StartErrorLogger(System.String)">
+            <summary>
+            This starts a logger that records detected errors. The log created is much smaller than the COM traffic log.
+            </summary>
+            <param name="logPath">A complete file spec, including path and file name. 
+            The actual file names used for logging are based on the file name passed to this function,
+            but they are not identical.
+            Folders must exist before calling this function. It does not create folders. 
+            This argument must not be an empty string nor null.</param>
+            <returns>True if logger started. False otherwise.</returns>
+        </member>
+        <member name="P:EtalumaStage.StageController.DisableLogging">
+            <summary>
+            Setting this to 'true' prevents writing to log files.
+            Setting this to 'false' allows writing to log files.
+            This property may be set before or after calling 'StartLogger'.
+            The default value is 'false'.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.StageController.#ctor">
+            <summary>
+            Constructor that does not enable COM port logging.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.StageController.firmwareVersion">
+            <summary>
+            Call this to get the firmware version of the x/y/z stage board.
+            </summary>
+            <returns>String containing the firmware version of the x/y/z stage board.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.abortStageMovement">
+            <summary>
+            Calling this stops all axes moving and initialization (if called during initialization).
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.StageController.OneStepInitialization(System.String@)">
+            <summary>
+            The client may call this function to start the initialization of the stage.
+            The client must poll 'OneStepInitializationComplete()' to determine when the 
+            initialization is complete.
+            This call is non-blocking.
+            </summary>
+            <param name="errorDescription">This string gets filled with a message describing the result of the start of initialization.</param>
+            <returns>True if successfully started.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.IsPowerConnected">
+            <summary>
+            This function tests if the power is plugged into the Trinamic board.
+            </summary>
+            <returns>True if powered, false if no power.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.OneStepInitializationComplete">
+            <summary>
+            Poll this function to determine when the 
+            initialization is complete.
+            </summary>
+            <returns>True if initialization is complete.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.failedToInitialize">
+            <summary>
+            Indicates if the stage failed to initialize.
+            </summary>
+            <returns>True if the stage failed to initialize.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.InitializationThreadFunction">
+            <summary>
+            This function runs in a worker thread.  It initializes the stage by finding the reference 
+            points for the x and y axes.  When the stage has found the reference points, this function
+            exists.  This function also exists if the user cancels the initialization.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.StageController.OpenCommLink(System.String@)">
+            <summary>
+            Opens the serial-over-USB communication link to the Trinamic board.
+            </summary>
+            <param name="errorMsg">This string gets filled with a message describing the result of the start of initialization.</param>
+            <returns>True if this function was successfully able to open the COM Port.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.IsCommLinkOpen">
+            <summary>
+            Indicates if the serial-over-USB link is open.
+            </summary>
+            <returns>True if the serial-over-USB link is open.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.CloseCommLink">
+            <summary>
+            Closes the serial-over-USB link.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.StageController.nonInvertedSwitchPolarities">
+            <summary>
+            This is a command to the Trinamic board,
+            which does not reverse the sensor polarity.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.StageController.PreInitializeXAxisToLimitSwitch">
+            <summary>
+            This moves the x-axis to the limit switch.
+            </summary>
+            <returns>True is successful, false if not.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.InitializeXAxisToReferencePoint">
+            <summary>
+            Moves the x-axis to the electro-mechanical reference points of the stage.
+            The electro-mechanical reference points are magnetic sensors where the 
+            Trinamic board considers the zero reference.  Keep in mind that the "home"
+            point from the user perspective is the upper-left corner of a microplate,
+            which is different.
+            </summary>
+            <returns>True if successfully initialized, false if not.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.StopXAxisReferenceSearch">
+            <summary>
+            Call this to stop the x-axis is moving during the movement to the reference position.
+            Use only during reference searching!
+            </summary>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, ther reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.xAxisReferenceSearchMoving">
+            <summary>
+            Call this to see if the x-axis is moving during a reference search.
+            Use only during reference searching!
+            </summary>
+            <returns>True if the x-axis is moving.</returns>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, ther reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.InitializeYAxisToReferencePoint">
+            <summary>
+            Moves the y-axis to the electro-mechanical reference points of the stage.
+            The electro-mechanical reference points are magnetic sensors where the 
+            Trinamic board considers the zero reference.  Keep in mind that the "home"
+            point from the user perspective is the upper-left corner of a microplate,
+            which is different.
+            </summary>
+            <returns>True if successfully initialized, false if not.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.homeAxisToLimitSwitch(System.Byte,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Call this function during initialization to home the specified axis to the by first finding 
+            the limit switch and then finding the "index pulse" and setting that as the zeroed position.
+            </summary>
+            <param name="motorId">X_MOTOR, Y_MOTOR or Z_MOTOR</param>
+            <param name="homingVelocity1">Fastest homing speed for the first phase of initialization.</param>
+            <param name="homingVelocity2">Medium homing speed for the second phase of initialization.</param>
+            <param name="homingVelocity3">Slow homing speed for the first phase of initialization.</param>
+            <param name="homingVelocity4">Very slow homing speed for the final phase of initialization.</param>
+            <param name="referenceSearchSpeed">Reference search speed.</param>
+            <returns>True is successful, false if failed.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.atLimitSwitch(System.Byte)">
+            <summary>
+            Detects if the specified axis it at the limit switch.
+            </summary>
+            <param name="motorId">X_MOTOR, Y_MOTOR or Z_MOTOR.</param>
+            <returns>True if the axis is at the limit switch, false if not.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.StopYAxisReferenceSearch">
+            <summary>
+            Call this to stop the y-axis is moving during the movement to the reference position.
+            Use only during reference searching!
+            </summary>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, ther reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.yAxisReferenceSearchMoving">
+            <summary>
+            Call this to see if the y-axis is moving during a reference search.
+            Use only during reference searching!
+            </summary>
+            <returns>True if the y-axis is moving.</returns>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, ther reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.InitializeZAxisToReferencePoint">
+            <summary>
+            Moves the z-axis to the electro-mechanical reference points of the stage.
+            The electro-mechanical reference points are magnetic sensors where the 
+            Trinamic board considers the zero reference.  Keep in mind that the zero-zero
+            point from the user perspective is the upper-left corner of a microplate,
+            which is different.
+            This function does not search for the "index pulse".
+            </summary>
+            <returns>True if successfully initialized, false if not.</returns>        
+        </member>
+        <member name="M:EtalumaStage.StageController.StopZAxisReferenceSearch">
+            <summary>
+            Call this to stop the z-axis is moving during the movement to the reference position.
+            Use only during reference searching!
+            </summary>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, ther reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.zAxisReferenceSearchMoving">
+            <summary>
+            Call this to see if the z-axis is moving during a reference search.
+            Use only during reference searching!
+            </summary>
+            <returns>True if the z-axis is moving.</returns>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, ther reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.turnOnFan(System.Boolean)">
+            <summary>
+            Call this to turn on/off the fan.
+            </summary>
+            <param name="turnOn">True to turn on the fan, false to turn off the fan.</param>
+        </member>
+        <member name="M:EtalumaStage.StageController.SetYAxisMaximumSpeed(System.Int32)">
+            <summary>
+            Sets the maximum speed of the y-axis stage.
+            </summary>
+            <param name="speed">Units of speed, see p. 70 of 'TMCM-6110_TMCL_firmware_manual.pdf' for a details.</param>
+            <returns>True is the speed is successfully set.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.SetYAxisMaximumAcceleration(System.Int32)">
+            <summary>
+            Sets the maximum acceleration of the y-axis stage.
+            </summary>
+            <param name="acceleration">Units of acceleration, see p. 70 of 'TMCM-6110_TMCL_firmware_manual.pdf' for a details.</param>
+            <returns>True is the speed is successfully set.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.SetXAxisMaximumSpeed(System.Int32)">
+            <summary>
+            Sets the maximum speed of the x-axis stage.
+            </summary>
+            <param name="speed">Units of speed, see p. 70 of 'TMCM-6110_TMCL_firmware_manual.pdf' for a details.</param>
+            <returns>True is the speed is successfully set.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.SetXAxisMaximumAcceleration(System.Int32)">
+            <summary>
+            Sets the maximum acceleration of the x-axis stage.
+            </summary>
+            <param name="acceleration">Units of acceleration, see p. 70 of 'TMCM-6110_TMCL_firmware_manual.pdf' for a details.</param>
+            <returns>True is the speed is successfully set.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.GetAbsoluteYPositionMillimeters(System.Single@)">
+            <summary>
+            Gets the "absolute" position of the y-axis stage in millimeters but relative to the home position.
+            </summary>
+            <param name="yAbsolutePositionMillimeters">
+            This gets set to the absolute position of the y-axis stage during a successful call to this function.
+            </param>
+            <returns>True if the position was successfully read.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.GetXRelativeToViewableArea(System.Single@)">
+            <summary>
+            NOTE: Uses CalibrationOffsetX.
+            Get x axis position relative to the edge of the viewable area. 
+            This is approximately the area of the rectangle circumscribing the wells of a 1536 well plate.
+            x = 0 at the edge adjacent to column A.
+            </summary>
+            <param name="x_pos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.GetYRelativeToViewableArea(System.Single@)">
+            <summary>
+            NOTE: Uses CalibrationOffsetY.
+            Get y axis position relative to the edge of the viewable area. 
+            This is approximately the area of the rectangle circumscribing the wells of a 1536 well plate.
+            y = 0 at the edge adjacent to row 1.
+            </summary>
+            <param name="y_pos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.GetAbsoluteXPositionMillimeters(System.Single@)">
+            <summary>
+            Gets the "absolute" position of the x-axis stage in millimeters but relative to the home position.
+            </summary>
+            <param name="xAbsolutePositionMillimeters">
+            This gets set to the absolute position of the x-axis stage during a successful call to this function.
+            </param>
+            <returns>True if the position was successfully read.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.GetAbsoluteZPositionMillimeters(System.Single@)">
+            <summary>
+            Gets the "absolute" position of the z-axis stage in millimeters but relative to the home position.
+            </summary>
+            <param name="zAbsolutePositionMillimeters">
+            This gets set to the absolute position of the z-axis stage during a successful call to this function.
+            </param>
+            <returns>True if the position was successfully read.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.GetAbsoluteYPositionMicroSteps(System.Int32@)">
+            <summary>
+            Gets the absolute position of the y-axis stage in microsteps.
+            </summary>
+            <param name="yAbsolutePositionMicroSteps">
+            This gets set to the absolute position of the y-axis during a successful call to this function.
+            </param>
+            <returns>True if the position was successfully read.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.GetAbsoluteXPositionMicroSteps(System.Int32@)">
+            <summary>
+            Gets the absolute position of the x-axis stage in microsteps.
+            </summary>
+            <param name="xAbsolutePositionMicroSteps">
+            This gets set to the absolute position of the x-axis during a successful call to this function.
+            </param>
+            <returns>True if the position was successfully read.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.GetAbsoluteZPositionMicroSteps(System.Int32@)">
+            <summary>
+            Gets the absolute position of the z-axis stage in microsteps.
+            </summary>
+            <param name="zAbsolutePositionMicroSteps">
+            This gets set to the absolute position of the z-axis during a successful call to this function.
+            </param>
+            <returns>True if the position was successfully read.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.xReachedCommandedPosition">
+            <summary>
+            Poll this function to determine if the x-axis has reached the most-recent commanded position.
+            </summary>
+            <returns>True if the x-axis has reached the commanded position.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.yReachedCommandedPosition">
+            <summary>
+            Poll this function to determine if the y-axis has reached the most-recent commanded position.
+            </summary>
+            <returns>True if the y-axis has reached the commanded position.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.zReachedCommandedPosition">
+            <summary>
+            Poll this function to determine if the z-axis has reached the most-recent commanded position.
+            </summary>
+            <returns>True if the z-axis has reached the commanded position.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.IsXStageMoving">
+            <summary>
+            Indicates if the x-axis if the stage is moving.
+            Use only during non-reference searching!
+            </summary>
+            <returns>True if the x-axis is moving.</returns>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, the reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.IsYStageMoving">
+            <summary>
+            Indicates if the y-axis if the stage is moving.
+            Use only during non-reference searching!
+            </summary>
+            <returns>True if the y-axis is moving.</returns>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, the reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.IsZStageMoving">
+            <summary>
+            Indicates if the z-axis if the stage is moving.
+            Use only during non-reference searching!
+            </summary>
+            <returns>True if the z-axis is moving.</returns>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, the reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.StopXMotor">
+            <summary>
+            This stops the x motor.
+            Use only during non-reference searching!
+            </summary>
+            <returns>True if the x motor was successfully commanded to stop.</returns>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, ther reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.StopYMotor">
+            <summary>
+            This stops the y motor.
+            Use only during non-reference searching!
+            </summary>
+            <returns>True if the y motor was successfully commanded to stop.</returns>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, ther reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.StopZMotor">
+            <summary>
+            This stops the z motor.
+            Use only during non-reference searching!
+            </summary>
+            <returns>True if the z motor was successfully commanded to stop.</returns>
+            <remarks>
+            Note: A reference search is used when initializing the stage so it can find the "zero" position.
+            On the physical stage, ther reference points are usually magnetic sensors.
+            </remarks>
+        </member>
+        <member name="M:EtalumaStage.StageController.GetXAbsoluteRangeMicrometers(System.Single@,System.Single@)">
+            <summary>
+            This function returns the range of travel possible for the x-axis of the stage.
+            </summary>
+            <param name="xMinimumMillimeters">Lower limit of travel in millimeters.</param>
+            <param name="xMaximumMillimeters">Upper limit of travel in millimeters.</param>
+        </member>
+        <member name="M:EtalumaStage.StageController.GetYAbsoluteRangeMicrometers(System.Single@,System.Single@)">
+            <summary>
+            This function returns the range of travel possible for the y-axis of the stage.
+            </summary>
+            <param name="yMinimumMillimeters">Lower limit of travel in millimeters.</param>
+            <param name="yMaximumMillimeters">Upper limit of travel in millimeters.</param>
+        </member>
+        <member name="M:EtalumaStage.StageController.ConvertMicroStepsToMicrometers(System.Int32)">
+            <summary>
+            Converts the parameter (microsteps) to micrometers.
+            </summary>
+            <param name="microSteps">The microsteps value to convert.</param>
+            <returns>The value in micrometers.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.ConvertMicrometersToMicroSteps(System.Single)">
+            <summary>
+            Converts the parameter (micrometers) to microsteps.
+            </summary>
+            <param name="microMeters">The micro-meters value to convert.</param>
+            <returns>The value in microsteps.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.ConvertZMicroStepsToMicrometers(System.Int32)">
+            <summary>
+            Converts the parameter (microsteps) to micrometers for the z-axis.
+            </summary>
+            <param name="microSteps">The microsteps value to convert.</param>
+            <returns>The value in micrometers.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.ConvertZMicrometersToMicroSteps(System.Single)">
+            <summary>
+            Converts the parameter (micrometers) to microsteps.
+            </summary>
+            <param name="microMeters">The micro-meters value to convert.</param>
+            <returns>The value in microsteps.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.ConvertZMicrometersToMicroSteps(System.Decimal)">
+            <summary>
+            Converts the parameter (micrometers) to the nearest number of integer microsteps.
+            </summary>
+            <param name="microMeters">The micro-meters value to convert.</param>
+            <returns>The value in microsteps.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveXStageToAbsolutePositionMillimeters(System.Single)">
+            <summary>
+            Moves the x-axis to the specified absolute position (in millimeters).
+            The zero position is home.
+            </summary>
+            <param name="milliMeters">The desired absolute position of the x-axis, in millimeters.</param>
+            <returns>True if the x axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveYStageToAbsolutePositionMillimeters(System.Single)">
+            <summary>
+            Moves the y-axis to the specified absolute position (in millimeters).
+            The zero position is home.
+            </summary>
+            <param name="milliMeters">The desired absolute position of the y-axis, in millimeters.</param>
+            <returns>True if the y axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveZStageToAbsolutePositionMillimeters(System.Single)">
+            <summary>
+            Moves the z-axis to the specified absolute position (in millimeters).
+            </summary>
+            <param name="milliMeters">The desired absolute position of the z-axis, in millimeters.</param>
+            <returns>True if the z axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveXRelativeToViewableArea(System.Single)">
+            <summary>
+            NOTE: Uses CalibrationOffsetX.
+            Move x axis to a position relative to the edge of the viewable area. 
+            This is approximately the area of the rectangle circumscribing the wells of a 1536 well plate.
+            x = 0 at the edge adjacent to column A.
+            </summary>
+            <param name="xPos_mm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveYRelativeToViewableArea(System.Single)">
+            <summary>
+            NOTE: Uses CalibrationOffsetY.
+            Move y axis to a position relative to the edge of the viewable area. 
+            This is approximately the area of the rectangle circumscribing the wells of a 1536 well plate.
+            y = 0 at the edge adjacent to row 1.
+            </summary>
+            <param name="yPos_mm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveXStageRelativeToMicroplateHomeMillimeters(System.Single)">
+            <summary>
+            Moves the x-axis to the specified position relative to the upper-left corner of the microplate (in millimeters).
+            The zero position is the upper-left corner of the microplate.
+            Wells 
+            </summary>
+            <param name="milliMeters">The desired relative position of the x-axis, in millimeters.  This value must be negative.</param>
+            <returns>True if the x-axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveYStageRelativeToMicroplateHomeMillimeters(System.Single)">
+            <summary>
+            Moves the y-axis to the specified position relative to the upper-left corner of the microplate (in millimeters).
+            The zero position is the upper-left corner of the microplate.
+            </summary>
+            <param name="milliMeters">The desired relative position of the y-axis, in millimeters.  This value must be negative.</param>
+            <returns>True if the y-axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveXStageToAbsolutePositionMicroSteps(System.Int32)">
+            <summary>
+            Moves the x-stage to the specified absolute position (in microsteps).
+            </summary>
+            <param name="microSteps">The desired absolute position of the x-stage, in microsteps.</param>
+            <returns>True if the x axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveYStageToAbsolutePositionMicroSteps(System.Int32)">
+            <summary>
+            Moves the y-stage to the specified absolute position (in microsteps).
+            </summary>
+            <param name="microSteps">The desired absolute position of the y-stage, in microsteps.</param>
+            <returns>True if the y axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveZStageToAbsolutePositionMicroSteps(System.Int32)">
+            <summary>
+            Moves the z-stage to the specified absolute position (in microsteps).
+            </summary>
+            <param name="microSteps">The desired absolute position of the z-stage, in microsteps.</param>
+            <returns>True if the z axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveXStageToRelativePositionMicroSteps(System.Int32)">
+            <summary>
+            Moves the x-stage to the specified relative position (in microsteps).
+            </summary>
+            <param name="microSteps">The desired relative position of the x-stage, in microsteps.</param>
+            <returns>True if the x axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveYStageToRelativePositionMicroSteps(System.Int32)">
+            <summary>
+            Moves the y-stage to the specified relative position (in microsteps).
+            </summary>
+            <param name="microSteps">The desired relative position of the y-stage, in microsteps.</param>
+            <returns>True if the y axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveZStageToRelativePositionMicroSteps(System.Int32)">
+            <summary>
+            Moves the z-stage to the specified relative position (in microsteps).
+            </summary>
+            <param name="microSteps">The desired relative position of the z-stage, in microsteps.</param>
+            <returns>True if the z axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveXStageToRelativePositionMilliMeters(System.Single)">
+            <summary>
+            Moves the x-axis to the specified relative position (in millimeters).
+            </summary>
+            <param name="milliMeters">The desired relative position of the axis, in millimeters.</param>
+            <returns>True if the axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveYStageToRelativePositionMilliMeters(System.Single)">
+            <summary>
+            Moves the y-axis to the specified relative position (in millimeters).
+            </summary>
+            <param name="milliMeters">The desired relative position of the axis, in millimeters.</param>
+            <returns>True if the axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.MoveZStageToRelativePositionMilliMeters(System.Single)">
+            <summary>
+            Moves the z-axis to the specified relative position (in millimeters).
+            </summary>
+            <param name="milliMeters">The desired relative position of the axis, in millimeters.</param>
+            <returns>True if the axis was successfully commanded to move.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.ReachedAxisPosition(System.Byte)">
+            <summary>
+            Indicates if a specified axis has reached the previously-commanded position.
+            </summary>
+            <param name="motor">Specifies the axis, X_MOTOR, Y_MOTOR or Z_MOTOR.</param>
+            <returns>True if the specified axis has reached the position.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.isDeckLidOpen">
+            <summary>
+            Indicates if the deck lid of the Lumascope 720 is open.
+            </summary>
+            <returns>True if the deck lid is open.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.SendCmd(System.Byte,System.Byte,System.Byte,System.Byte,System.Int32,EtalumaStage.TmclReplyMessage@)">
+            <summary>
+            Send a binary TMCL command. 
+            This functions blocks for the 'REPLY_MESSAGE_TIMEOUT_MS' timeout waiting for the reply message from the board.
+            The function will return 'false' is no reply message is received within the timeout period.
+            Do not send the next command before you have received the reply! (p. 16 of 'TMCM-6110_TMCL_firmware_manual.pdf') 
+            e.g.  SendCmd(ComHandle, 1, TMCL_MVP, MVP_ABS, 1, 50000);   will be MVP ABS, 1, 50000 for a module with address 1
+            Parameters: Handle: Handle of the serial port (returned by OpenRS232).
+            </summary>
+            <param name="address">address: address of the module (factory default is 1).</param>
+            <param name="command">command: the TMCL command (see the constants at the begiining of this file)</param>
+            <param name="type">type:    the "Type" parameter of the TMCL command (set to 0 if unused)</param>
+            <param name="motor">motor:   the motor number (set to 0 if unused)</param>
+            <param name="value">value:   the "Value" parameter (depending on the command, set to 0 if unused)</param>
+            <param name="tmclReplyMessage">tmclReplyMessage:   this gets set if the function is successful with response parameters</param>
+            <returns>'true' if the reply message is received within the timeout period, 'false' if not.</returns>
+        </member>
+        <member name="M:EtalumaStage.StageController.NonDeckCheckSendCmd(System.Byte,System.Byte,System.Byte,System.Byte,System.Int32,EtalumaStage.TmclReplyMessage@)">
+            <summary>
+            Do not call this function directly, but only from 'SendCmd()'.
+            This function does not check the state of the deck.
+            The functionality, parameters and the return are the same as 'SendCmd()'
+            with the exception of checking the state of the deck.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.PGLogger.#ctor">
+            <summary>
+            Write log lines to a file.
+            Two log files are created. The log file names are made by appending a "1" and a "2" to
+            the filespec passed in the StartLogger method.
+            The file sizes are limited to approximately MAX_LOG_FILE_SIZE.
+            When one file reaches the size limit it is closed and the other file is overwritten with subsequent log entries.
+            The log line length is limited to approximately MAX_WRITE_LENGTH.
+            The log entries are comma delimited and have two or three fields depending on which write methods are used.
+            The WriteLine method writes two fields in this order: the tick count, then the log entry.
+            The WriteLineDateTime method writes three fields in this order: the date-time, the tick count, then the log entry.
+            The tick count begins at zero when the Logger type is first used.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.PGLogger.disableLogging">
+            <summary>
+            Setting this to 'true' disables logging. When 'true', all calls to write to the log return without writing.
+            When 'true', although writes are not performed, the returned PGLoggerStatus.val property will be 'OK'.
+            This property is 'false' by default.
+            </summary>
+        </member>
+        <member name="T:EtalumaStage.PGLogger.PGLoggerDataType">
+            <summary>
+            These determine the interpretation of byte array data received for logging.
+            INT32BE means 32 bit signed integer, big endian (MSB at lowest address = first).
+            </summary>
+        </member>
+        <member name="T:EtalumaStage.PGLogger.PGLoggerByteField">
+            <summary>
+            This class is used to define type/length fields in byte array data received for logging.
+            </summary>
+        </member>
+        <member name="F:EtalumaStage.PGLogger.fieldList">
+            <summary>
+            Add PGLoggerByteFields to this list before attempting to log a byte array.
+            The total of all the byteLengths in the list must equal the size of the byte array.
+            </summary>
+        </member>
+        <member name="T:EtalumaStage.PGLogger.PGLoggerStatusVal">
+            <summary>
+            Enum holding possible PGLoggerStaus values.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.PGLogger.status">
+            <summary>
+            Status object.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.PGLogger.StartLogger(System.String)">
+            <summary>
+            This starts the logger.
+            </summary>
+            <param name="logPath">A complete file spec, including path and file name. 
+            The actual file names used for logging are based on the file name passed to this function,
+            but they are not identical.
+            Folders must exist before calling this function. It does not create folders. 
+            The existence of the target folder is checked by this function.
+            This argument must not be an empty string nor null.</param>
+            <returns>OK if logger started. False otherwise.</returns>
+        </member>
+        <member name="M:EtalumaStage.PGLogger.Dispose">
+            <summary>
+            Dispose method.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.PGLogger.Finalize">
+            <summary>
+            Destructor.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.PGLogger.WriteLine(System.String,System.Byte[])">
+            <summary>
+            Convert byte array according to the current -fieldList- and write the results as a line of text
+            to the log file prepended with the tick count and the byteArrayLabel.
+            </summary>
+            <param name="byteArray"></param>
+            <returns>Logger status object.</returns>
+        </member>
+        <member name="M:EtalumaStage.PGLogger.WriteLine(System.Byte[])">
+            <summary>
+            Convert byte array according to the current -fieldList- and write the results as a line of text
+            to the log file prepended with the tick count.
+            </summary>
+            <param name="byteArray"></param>
+            <returns>Logger status object.</returns>
+        </member>
+        <member name="M:EtalumaStage.PGLogger.WriteLineDateTime(System.Byte[])">
+            <summary>
+            Convert byte array according to the current -fieldList- and write the results as a line of text
+            to the log file prepended with the date-time and tick count, delimited by a commma.
+            </summary>
+            <param name="byteArray"></param>
+            <returns>Logger status object.</returns>
+        </member>
+        <member name="M:EtalumaStage.PGLogger.WriteLine(System.String)">
+            <summary>
+            Write a line of text to the log file prepended with the tick count, delimited by a commma.
+            </summary>
+            <param name="logLine"></param>
+        </member>
+        <member name="M:EtalumaStage.PGLogger.WriteLineDateTime(System.String)">
+            <summary>
+            Write a line of text to the log file prepended with the date-time and tick count, delimited by commmas.
+            </summary>
+            <param name="logLine"></param>
+        </member>
+        <member name="T:EtalumaStage.TimeStamp">
+            <summary>
+            Provides a unique ascending timestamp in units of elapsed ticks.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.TimeStamp.#cctor">
+            <summary>
+            Constructor for class TimeStamp.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.TimeStamp.GetTimeStampTicks">
+            <summary>
+            Gets the current number of ticks elapsed since class instantiation.
+            </summary>
+            <returns>Returns a long with value equal to the number of ticks elapsed since class instantiation.</returns>
+        </member>
+        <member name="T:EtalumaStage.TmclReplyMessage">
+            <summary>
+            This class represents a reply message from the Trinamic board.
+            Every time a command has been sent to a module, the module sends a reply.  
+            This class converts the nine bytes received from the board to something understandable.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.TmclReplyMessage.ToString">
+            <summary>
+            Returns a text description of the message.
+            </summary>
+            <returns>Contains message.</returns>
+        </member>
+        <member name="M:EtalumaStage.TmclReplyMessage.#ctor">
+            <summary>
+            Default CTOR.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.TmclReplyMessage.#ctor(System.Byte[])">
+            <summary>
+            CTOR initialized with message.
+            </summary>
+            <param name="messageBytes">
+            Contains the byte sequence sent from the Trinamic board.
+            We assume that the byte sequence contains just a single
+            reply message from the Trinamic board.
+            </param>
+        </member>
+        <member name="M:EtalumaStage.TmclReplyMessage.GetRawMessageBytes">
+            <summary>
+            Calling this returns the bytes of the raw message received from the Trinamic board.
+            </summary>
+            <returns>Array containing the raw message bytes.</returns>
+        </member>
+        <member name="M:EtalumaStage.TmclReplyMessage.ParsesBytesToValues(System.Byte[])">
+            <summary>
+            This converts the raw nine bytes to values that the user can read.
+            The readable values are made accessable via the class properties.
+            </summary>
+            <param name="messageBytes"></param>
+        </member>
+        <member name="P:EtalumaStage.TmclReplyMessage.ChecksumResult">
+            <summary>
+            Indicates if the calculated checksum matches the received checksum.
+            </summary>
+        </member>
+        <member name="T:EtalumaStage.TMCL">
+            <summary>
+            This class contains constants used for communicating with the Trinamic stage controller board.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.TMCL.Commands.GetCommandDescription(System.Byte)">
+            <summary>
+            Gets the text name of the command from the numerical command.
+            </summary>
+            <param name="command">Command value, e.g., Commands.MVP.</param>
+            <returns>Contains the texturized command description, e.g., "MVP".</returns>
+        </member>
+        <member name="M:EtalumaStage.TMCL.Commands.GetReturnCodeDescription(System.Byte)">
+            <summary>
+            This function gives a desciption for a given 'status' returned from the Trinamic board.
+            </summary>
+            <param name="status">This is the 'status' value returned in the reply packet from the Trinamic board.</param>
+            <returns>String description for the 'status' passed as a parameter.</returns>
+        </member>
+        <member name="T:EtalumaStage.TrinamicComPort">
+            <summary>
+            This class is for linking (serial com port over USB) to the Trinamic board, which controls the X/Y/Z stage of the Lumascope 720.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.TrinamicComPort.#ctor">
+            <summary>
+            Constructor that does not enable COM port logging.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.TrinamicComPort.StartLogger(System.String)">
+            <summary>
+            This starts a logger that records serial COM traffic with the motor controller.
+            </summary>
+            <param name="logPath">A complete file spec, including path and file name. 
+            The actual file names used for logging are based on the file name passed to this function,
+            but they are not identical.
+            Folders must exist before calling this function. It does not create folders. 
+            This argument must not be an empty string nor null.</param>
+            <returns>True if logger started. False otherwise.</returns>
+        </member>
+        <member name="P:EtalumaStage.TrinamicComPort.DisableLogging">
+            <summary>
+            Setting this to 'true' prevents writing to log files.
+            Setting this to 'false' allows writing to log files.
+            This property may be set before or after calling 'StartLogger'.
+            The default value is 'false'.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.TrinamicComPort.PortName">
+            <summary>
+            The name of the port to which we connect to the Trinamic board, e.g., "COM5".
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.TrinamicComPort.PortDescription">
+            <summary>
+            Description of the port to which we connect to the Trinamic board.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.TrinamicComPort.Timeout">
+            <summary>
+             This is the how long this object will try to read before timing out, in milliseconds.
+            </summary>
+        </member>
+        <member name="P:EtalumaStage.TrinamicComPort.IsOpen">
+            <summary>
+            Returns 'true' if the COM port is open.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.TrinamicComPort.Open(System.String@)">
+            <summary>
+            Opens the serial-over-USB communication link to the Trinamic board.
+            </summary>
+            <returns>True if this function was successfully able to open the COM Port.</returns>
+        </member>
+        <member name="M:EtalumaStage.TrinamicComPort.Close">
+            <summary>
+            This closes the COM port.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.TrinamicComPort.Send(System.Byte[],System.Int32,System.String@)">
+            <summary>
+            This sends the message contained in the parameter to the Trinamic board and 
+            waits for the response that the Trinamic board sends back.
+            </summary>
+            <param name="command">Contains bytes composing a message to control or interrogate the Trinamic board.</param>
+            <param name="responseMessageSize">Gets set to the size of the response message.</param>
+            <param name="errorMessage">This get set to a string describing the result of the call to this function, whether successful or not.</param>
+            <returns>Returns a byte array containing the response message from the Trinamic board or 'null' if failed.</returns>
+        </member>
+        <member name="M:EtalumaStage.TrinamicComPort.Dispose">
+            <summary>
+            This class's implementation of IDisposable.Dispose.
+            </summary>
+        </member>
+        <member name="T:EtalumaStage.WSC4CSerialCOM">
+            <summary>
+            Summary description for WSC4CSerialCOM.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.WSC4CSerialCOM.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.WSC4CSerialCOM.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:EtalumaStage.WSC4CSerialCOM.BlockUntilBytesReceived(System.Int32,System.Int64)">
+            <summary>
+            The client calls this to block in order to wait until an expected 
+            number of bytes are buffered in the COM receive buffer.
+            </summary>
+            <param name="byteCount">This specifies the minimum number of bytes for which to wait.</param>
+            <param name="timeoutMilliseconds">This specifies the maximum time that this function will block, in milliseconds.</param>
+            <returns>
+            True is this function detected at least the number of specified bytes in
+            the COM receive buffer within the specified time limit, else returns false.
+            </returns>
+        </member>
+        <member name="M:EtalumaStage.WSC4CSerialCOM.OpenCOM(System.String)">
+            <summary>
+            This opens the parameter-specifed COM port.d
+            </summary>
+            <param name="comPortName">This is the COM port to open, e.g., COM1.</param>
+            <returns>Returns true if the </returns>
+        </member>
+        <member name="M:EtalumaStage.WSC4CSerialCOM.CloseCOM">
+            <summary>
+            Call to close the COM port.
+            </summary>
+            <returns>True if the port is closed.</returns>
+        </member>
+        <member name="M:EtalumaStage.WSC4CSerialCOM.Transmit(System.Byte[])">
+            <summary>
+            Transmits the bytes in the parameter array.
+            </summary>
+            <param name="data">Holds bytes to transmit.</param>
+            <returns>True if successfully sent.</returns>
+        </member>
+        <member name="M:EtalumaStage.WSC4CSerialCOM.Transmit(System.Byte[]@)">
+            <summary>
+            Transmits the bytes in the parameter array.
+            </summary>
+            <param name="data">Holds bytes to transmit.</param>
+            <returns>True if successfully sent.</returns>
+        </member>
+        <member name="M:EtalumaStage.WSC4CSerialCOM.Receive(System.Byte[]@)">
+            <summary>
+            Receives data into the buffer parameter.
+            </summary>
+            <param name="data">The received data gets put into this parameter.</param>
+            <returns>True if the data is successfully received.</returns>
+        </member>
+        <member name="F:libusbK.AllKOptions.LIBUSBK_FULLPATH_TO_ALTERNATE_DLL">
+            <summary>
+              Alternate libusbK library to use.  This must be assigned before any libusbK functions are called and it must be the full path and file name to a libusbK.dll.
+            </summary>
+        </member>
+        <member name="F:libusbK.AllKConstants.KLST_STRING_MAX_LEN">
+            <summary>
+            Allocated length for all strings in a \ref KLST_DEVINFO structure.
+            </summary>
+        </member>
+        <member name="F:libusbK.AllKConstants.LIBUSBK_DLL">
+            <summary>
+            libusbK library
+            </summary>
+        </member>
+        <member name="F:libusbK.AllKConstants.USB_CONFIG_POWERED_MASK">
+            <summary>
+            Config power mask for the \c bmAttributes field of a \ref USB_CONFIGURATION_DESCRIPTOR
+            </summary>
+        </member>
+        <member name="F:libusbK.AllKConstants.USB_ENDPOINT_ADDRESS_MASK">
+            <summary>
+            Endpoint address mask for the \c bEndpointAddress field of a \ref USB_ENDPOINT_DESCRIPTOR
+            </summary>
+        </member>
+        <member name="F:libusbK.AllKConstants.USB_ENDPOINT_DIRECTION_MASK">
+            <summary>
+            Endpoint direction mask for the \c bEndpointAddress field of a \ref USB_ENDPOINT_DESCRIPTOR
+            </summary>
+        </member>
+        <member name="F:libusbK.EndpointType.CONTROL">
+            <summary>
+            Indicates a control endpoint
+            </summary>
+        </member>
+        <member name="F:libusbK.EndpointType.ISOCHRONOUS">
+            <summary>
+            Indicates an isochronous endpoint
+            </summary>
+        </member>
+        <member name="F:libusbK.EndpointType.BULK">
+            <summary>
+            Indicates a bulk endpoint
+            </summary>
+        </member>
+        <member name="F:libusbK.EndpointType.INTERRUPT">
+            <summary>
+            Indicates an interrupt endpoint
+            </summary>
+        </member>
+        <member name="F:libusbK.EndpointType.MASK">
+            <summary>
+            Endpoint type mask for the \c bmAttributes field of a \ref USB_ENDPOINT_DESCRIPTOR
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.AccessDenied">
+            <summary>
+              Access is denied.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.Busy">
+            <summary>
+              The requested resource is in use.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.Cancelled">
+            <summary>
+              The operation was canceled by the user.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.Empty">
+            <summary>
+              The library, drive, or media pool is empty.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.InvalidHandle">
+            <summary>
+              The handle is invalid.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.InvalidParameter">
+            <summary>
+              The parameter is incorrect.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.IoIncomplete">
+            <summary>
+              Overlapped I/O event is not in a signaled state.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.IoPending">
+            <summary>
+              Overlapped I/O operation is in progress.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.MoreData">
+            <summary>
+              More data is available.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.NoMoreItems">
+            <summary>
+              No more data is available.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.NotEnoughMemory">
+            <summary>
+              Not enough storage is available to process this command.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.NotFound">
+            <summary>
+              Element not found.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.NotSupported">
+            <summary>
+              The request is not supported.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.OperationAborted">
+            <summary>
+              The I/O operation has been aborted because of either a thread exit or an application request.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.ResourceNotAvailable">
+            <summary>
+              The cluster resource is not available.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.ResourceNotFound">
+            <summary>
+              The cluster resource could not be found.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.SemTimeout">
+            <summary>
+              The semaphore timeout period has expired.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.Success">
+            <summary>
+              The operation completed successfully.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.ThreadNotInProcess">
+            <summary>
+              An attempt was made to operate on a thread within a specific process, but the thread specified is not in the process specified.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.ThreadWasSuspended">
+            <summary>
+              A thread termination occurred while the thread was suspended. The thread was resumed, and termination proceeded.
+            </summary>
+        </member>
+        <member name="F:libusbK.ErrorCodes.TooManyModules">
+            <summary>
+              Too many dynamic-link modules are attached to this program or dynamic-link module.
+            </summary>
+        </member>
+        <member name="T:libusbK.USBD_PIPE_TYPE">
+            <Summary>Values used in the \c bmAttributes field of a \ref USB_ENDPOINT_DESCRIPTOR</Summary>
+        </member>
+        <member name="F:libusbK.USBD_PIPE_TYPE.UsbdPipeTypeControl">
+            <Summary>Indicates a control endpoint</Summary>
+        </member>
+        <member name="F:libusbK.USBD_PIPE_TYPE.UsbdPipeTypeIsochronous">
+            <Summary>Indicates an isochronous endpoint</Summary>
+        </member>
+        <member name="F:libusbK.USBD_PIPE_TYPE.UsbdPipeTypeBulk">
+            <Summary>Indicates a bulk endpoint</Summary>
+        </member>
+        <member name="F:libusbK.USBD_PIPE_TYPE.UsbdPipeTypeInterrupt">
+            <Summary>Indicates an interrupt endpoint</Summary>
+        </member>
+        <member name="T:libusbK.KISO_FLAG">
+            <Summary>Additional ISO transfer flags.</Summary>
+        </member>
+        <member name="F:libusbK.KISO_FLAG.SET_START_FRAME">
+            <Summary>Do not start the transfer immediately, instead use \ref KISO_CONTEXT::StartFrame.</Summary>
+        </member>
+        <member name="T:libusbK.KLIB_HANDLE_TYPE">
+            <Summary>Handle type enumeration.</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_HANDLE_TYPE.HOTK">
+            <Summary>Hot plug handle. \ref KHOT_HANDLE</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_HANDLE_TYPE.USBK">
+            <Summary>USB handle. \ref KUSB_HANDLE</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_HANDLE_TYPE.USBSHAREDK">
+            <Summary>Shared USB handle. \ref KUSB_HANDLE</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_HANDLE_TYPE.LSTK">
+            <Summary>Device list handle. \ref KLST_HANDLE</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_HANDLE_TYPE.LSTINFOK">
+            <Summary>Device info handle. \ref KLST_DEVINFO_HANDLE</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_HANDLE_TYPE.OVLK">
+            <Summary>Overlapped handle. \ref KOVL_HANDLE</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_HANDLE_TYPE.OVLPOOLK">
+            <Summary>Overlapped pool handle. \ref KOVL_POOL_HANDLE</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_HANDLE_TYPE.STMK">
+            <Summary>Pipe stream handle. \ref KSTM_HANDLE</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_HANDLE_TYPE.COUNT">
+            <Summary>Max handle type count.</Summary>
+        </member>
+        <member name="T:libusbK.KLST_SYNC_FLAG">
+            <Summary>Device list sync flags.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_SYNC_FLAG.NONE">
+            <Summary>Cleared/invalid state.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_SYNC_FLAG.UNCHANGED">
+            <Summary>Unchanged state,</Summary>
+        </member>
+        <member name="F:libusbK.KLST_SYNC_FLAG.ADDED">
+            <Summary>Added (Arrival) state,</Summary>
+        </member>
+        <member name="F:libusbK.KLST_SYNC_FLAG.REMOVED">
+            <Summary>Removed (Unplugged) state,</Summary>
+        </member>
+        <member name="F:libusbK.KLST_SYNC_FLAG.CONNECT_CHANGE">
+            <Summary>Connect changed state.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_SYNC_FLAG.MASK">
+            <Summary>All states.</Summary>
+        </member>
+        <member name="T:libusbK.KLST_FLAG">
+            <Summary>Device list initialization flags.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_FLAG.NONE">
+            <Summary>No flags (or 0)</Summary>
+        </member>
+        <member name="F:libusbK.KLST_FLAG.INCLUDE_RAWGUID">
+            <Summary>Enable listings for the raw device interface GUID \b only. {A5DCBF10-6530-11D2-901F-00C04FB951ED}</Summary>
+        </member>
+        <member name="F:libusbK.KLST_FLAG.INCLUDE_DISCONNECT">
+            <Summary>List all libusbK devices including those not currently connected.</Summary>
+        </member>
+        <member name="T:libusbK.BMREQUEST_DIR">
+            <Summary>bmRequest.Dir</Summary>
+        </member>
+        <member name="T:libusbK.BMREQUEST_TYPE">
+            <Summary>bmRequest.Type</Summary>
+        </member>
+        <member name="F:libusbK.BMREQUEST_TYPE.STANDARD">
+            <Summary>Standard request. See \ref USB_REQUEST_ENUM</Summary>
+        </member>
+        <member name="F:libusbK.BMREQUEST_TYPE.CLASS">
+            <Summary>Class-specific request.</Summary>
+        </member>
+        <member name="F:libusbK.BMREQUEST_TYPE.VENDOR">
+            <Summary>Vendor-specific request</Summary>
+        </member>
+        <member name="T:libusbK.BMREQUEST_RECIPIENT">
+            <Summary>bmRequest.Recipient</Summary>
+        </member>
+        <member name="F:libusbK.BMREQUEST_RECIPIENT.DEVICE">
+            <Summary>Request is for a device.</Summary>
+        </member>
+        <member name="F:libusbK.BMREQUEST_RECIPIENT.INTERFACE">
+            <Summary>Request is for an interface of a device.</Summary>
+        </member>
+        <member name="F:libusbK.BMREQUEST_RECIPIENT.ENDPOINT">
+            <Summary>Request is for an endpoint of a device.</Summary>
+        </member>
+        <member name="F:libusbK.BMREQUEST_RECIPIENT.OTHER">
+            <Summary>Request is for a vendor-specific purpose.</Summary>
+        </member>
+        <member name="T:libusbK.USB_GETSTATUS">
+            <Summary>Values for the bits returned by the \ref USB_REQUEST_GET_STATUS request.</Summary>
+        </member>
+        <member name="F:libusbK.USB_GETSTATUS.SELF_POWERED">
+            <Summary>Device is self powered</Summary>
+        </member>
+        <member name="F:libusbK.USB_GETSTATUS.REMOTE_WAKEUP_ENABLED">
+            <Summary>Device can wake the system from a low power/sleeping state.</Summary>
+        </member>
+        <member name="T:libusbK.USB_DESCRIPTOR_TYPE">
+            <Summary>Standard USB descriptor types. For more information, see section 9-5 of the USB 3.0 specifications.</Summary>
+        </member>
+        <member name="F:libusbK.USB_DESCRIPTOR_TYPE.DEVICE">
+            <Summary>Device descriptor type.</Summary>
+        </member>
+        <member name="F:libusbK.USB_DESCRIPTOR_TYPE.CONFIGURATION">
+            <Summary>Configuration descriptor type.</Summary>
+        </member>
+        <member name="F:libusbK.USB_DESCRIPTOR_TYPE.STRING">
+            <Summary>String descriptor type.</Summary>
+        </member>
+        <member name="F:libusbK.USB_DESCRIPTOR_TYPE.INTERFACE">
+            <Summary>Interface descriptor type.</Summary>
+        </member>
+        <member name="F:libusbK.USB_DESCRIPTOR_TYPE.ENDPOINT">
+            <Summary>Endpoint descriptor type.</Summary>
+        </member>
+        <member name="F:libusbK.USB_DESCRIPTOR_TYPE.DEVICE_QUALIFIER">
+            <Summary>Device qualifier descriptor type.</Summary>
+        </member>
+        <member name="F:libusbK.USB_DESCRIPTOR_TYPE.CONFIG_POWER">
+            <Summary>Config power descriptor type.</Summary>
+        </member>
+        <member name="F:libusbK.USB_DESCRIPTOR_TYPE.INTERFACE_POWER">
+            <Summary>Interface power descriptor type.</Summary>
+        </member>
+        <member name="F:libusbK.USB_DESCRIPTOR_TYPE.INTERFACE_ASSOCIATION">
+            <Summary>Interface association descriptor type.</Summary>
+        </member>
+        <member name="T:libusbK.KUSB_PROPERTY">
+            <Summary>Usb handle specific properties that can be retrieved with \ref UsbK_GetProperty.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_PROPERTY.DEVICE_FILE_HANDLE">
+            <Summary>Get the internal device file handle used for operations such as GetOverlappedResult or DeviceIoControl.</Summary>
+        </member>
+        <member name="T:libusbK.KUSB_DRVID">
+            <Summary>Supported driver id enumeration.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_DRVID.LIBUSBK">
+            <Summary>libusbK.sys driver ID</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_DRVID.LIBUSB0">
+            <Summary>libusb0.sys driver ID</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_DRVID.WINUSB">
+            <Summary>WinUSB.sys driver ID</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_DRVID.LIBUSB0_FILTER">
+            <Summary>libusb0.sys filter driver ID</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_DRVID.COUNT">
+            <Summary>Supported driver count</Summary>
+        </member>
+        <member name="T:libusbK.KUSB_FNID">
+            <Summary>Supported function id enumeration.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.Init">
+            <Summary>\ref UsbK_Init dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.Free">
+            <Summary>\ref UsbK_Free dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.ClaimInterface">
+            <Summary>\ref UsbK_ClaimInterface dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.ReleaseInterface">
+            <Summary>\ref UsbK_ReleaseInterface dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.SetAltInterface">
+            <Summary>\ref UsbK_SetAltInterface dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.GetAltInterface">
+            <Summary>\ref UsbK_GetAltInterface dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.GetDescriptor">
+            <Summary>\ref UsbK_GetDescriptor dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.ControlTransfer">
+            <Summary>\ref UsbK_ControlTransfer dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.SetPowerPolicy">
+            <Summary>\ref UsbK_SetPowerPolicy dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.GetPowerPolicy">
+            <Summary>\ref UsbK_GetPowerPolicy dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.SetConfiguration">
+            <Summary>\ref UsbK_SetConfiguration dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.GetConfiguration">
+            <Summary>\ref UsbK_GetConfiguration dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.ResetDevice">
+            <Summary>\ref UsbK_ResetDevice dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.Initialize">
+            <Summary>\ref UsbK_Initialize dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.SelectInterface">
+            <Summary>\ref UsbK_SelectInterface dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.GetAssociatedInterface">
+            <Summary>\ref UsbK_GetAssociatedInterface dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.Clone">
+            <Summary>\ref UsbK_Clone dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.QueryInterfaceSettings">
+            <Summary>\ref UsbK_QueryInterfaceSettings dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.QueryDeviceInformation">
+            <Summary>\ref UsbK_QueryDeviceInformation dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.SetCurrentAlternateSetting">
+            <Summary>\ref UsbK_SetCurrentAlternateSetting dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.GetCurrentAlternateSetting">
+            <Summary>\ref UsbK_GetCurrentAlternateSetting dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.QueryPipe">
+            <Summary>\ref UsbK_QueryPipe dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.SetPipePolicy">
+            <Summary>\ref UsbK_SetPipePolicy dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.GetPipePolicy">
+            <Summary>\ref UsbK_GetPipePolicy dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.ReadPipe">
+            <Summary>\ref UsbK_ReadPipe dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.WritePipe">
+            <Summary>\ref UsbK_WritePipe dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.ResetPipe">
+            <Summary>\ref UsbK_ResetPipe dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.AbortPipe">
+            <Summary>\ref UsbK_AbortPipe dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.FlushPipe">
+            <Summary>\ref UsbK_FlushPipe dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.IsoReadPipe">
+            <Summary>\ref UsbK_IsoReadPipe dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.IsoWritePipe">
+            <Summary>\ref UsbK_IsoWritePipe dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.GetCurrentFrameNumber">
+            <Summary>\ref UsbK_GetCurrentFrameNumber dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.GetOverlappedResult">
+            <Summary>\ref UsbK_GetOverlappedResult dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.GetProperty">
+            <Summary>\ref UsbK_GetProperty dynamic driver function id.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_FNID.COUNT">
+            <Summary>Supported function count</Summary>
+        </member>
+        <member name="T:libusbK.KHOT_FLAG">
+            <Summary>Hot plug config flags.</Summary>
+        </member>
+        <member name="F:libusbK.KHOT_FLAG.NONE">
+            <Summary>No flags (or 0)</Summary>
+        </member>
+        <member name="F:libusbK.KHOT_FLAG.PLUG_ALL_ON_INIT">
+            <Summary>Notify all devices which match upon a succuessful call to \ref HotK_Init.</Summary>
+        </member>
+        <member name="F:libusbK.KHOT_FLAG.PASS_DUPE_INSTANCE">
+            <Summary>Allow other \ref KHOT_HANDLE instances to consume this match.</Summary>
+        </member>
+        <member name="F:libusbK.KHOT_FLAG.POST_USER_MESSAGE">
+            <Summary>If a \c UserHwnd is specified, use \c PostMessage instead of \c SendMessage.</Summary>
+        </member>
+        <member name="T:libusbK.KOVL_WAIT_FLAG">
+            <Summary>\c WaitFlags used by \ref OvlK_Wait.</Summary>
+        </member>
+        <member name="F:libusbK.KOVL_WAIT_FLAG.NONE">
+            <Summary>Do not perform any additional actions upon exiting \ref OvlK_Wait.</Summary>
+        </member>
+        <member name="F:libusbK.KOVL_WAIT_FLAG.RELEASE_ON_SUCCESS">
+            <Summary>If the i/o operation completes successfully, release the OverlappedK back to it's pool.</Summary>
+        </member>
+        <member name="F:libusbK.KOVL_WAIT_FLAG.RELEASE_ON_FAIL">
+            <Summary>If the i/o operation fails, release the OverlappedK back to it's pool.</Summary>
+        </member>
+        <member name="F:libusbK.KOVL_WAIT_FLAG.RELEASE_ON_SUCCESS_FAIL">
+            <Summary>If the i/o operation fails or completes successfully, release the OverlappedK back to its pool. Perform no actions if it times-out.</Summary>
+        </member>
+        <member name="F:libusbK.KOVL_WAIT_FLAG.CANCEL_ON_TIMEOUT">
+            <Summary>If the i/o operation times-out cancel it, but do not release the OverlappedK back to its pool.</Summary>
+        </member>
+        <member name="F:libusbK.KOVL_WAIT_FLAG.RELEASE_ON_TIMEOUT">
+            <Summary>If the i/o operation times-out, cancel it and release the OverlappedK back to its pool.</Summary>
+        </member>
+        <member name="F:libusbK.KOVL_WAIT_FLAG.RELEASE_ALWAYS">
+            <Summary>Always release the OverlappedK back to its pool.  If the operation timed-out, cancel it before releasing back to its pool.</Summary>
+        </member>
+        <member name="F:libusbK.KOVL_WAIT_FLAG.ALERTABLE">
+            <Summary>Uses alterable wait functions.  See http://msdn.microsoft.com/en-us/library/windows/desktop/ms687036%28v=vs.85%29.aspx</Summary>
+        </member>
+        <member name="T:libusbK.KOVL_POOL_FLAG">
+            <Summary>\c Overlapped pool config flags.</Summary>
+        </member>
+        <member name="T:libusbK.KSTM_FLAG">
+            <Summary>Stream config flags.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_FLAG.NONE">
+            <Summary>None</Summary>
+        </member>
+        <member name="T:libusbK.KSTM_COMPLETE_RESULT">
+            <Summary>Stream config flags.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_COMPLETE_RESULT.VALID">
+            <Summary>Valid</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_COMPLETE_RESULT.INVALID">
+            <Summary>Invalid</Summary>
+        </member>
+        <member name="T:libusbK.WINUSB_PIPE_INFORMATION">
+            <Summary>The \c WINUSB_PIPE_INFORMATION structure contains pipe information that the \ref UsbK_QueryPipe routine retrieves.</Summary>
+        </member>
+        <member name="F:libusbK.WINUSB_PIPE_INFORMATION.PipeType">
+            <Summary>A \c USBD_PIPE_TYPE enumeration value that specifies the pipe type</Summary>
+        </member>
+        <member name="F:libusbK.WINUSB_PIPE_INFORMATION.PipeId">
+            <Summary>The pipe identifier (ID)</Summary>
+        </member>
+        <member name="F:libusbK.WINUSB_PIPE_INFORMATION.MaximumPacketSize">
+            <Summary>The maximum size, in bytes, of the packets that are transmitted on the pipe</Summary>
+        </member>
+        <member name="F:libusbK.WINUSB_PIPE_INFORMATION.Interval">
+            <Summary>The pipe interval</Summary>
+        </member>
+        <member name="T:libusbK.WINUSB_SETUP_PACKET">
+            <Summary>The \c WINUSB_SETUP_PACKET structure describes a USB setup packet.</Summary>
+        </member>
+        <member name="F:libusbK.WINUSB_SETUP_PACKET.RequestType">
+            <Summary>The request type. The values that are assigned to this member are defined in Table 9.2 of section 9.3 of the Universal Serial Bus (USB) specification (www.usb.org).</Summary>
+        </member>
+        <member name="F:libusbK.WINUSB_SETUP_PACKET.Request">
+            <Summary>The device request. The values that are assigned to this member are defined in Table 9.3 of section 9.4 of the Universal Serial Bus (USB) specification.</Summary>
+        </member>
+        <member name="F:libusbK.WINUSB_SETUP_PACKET.Value">
+            <Summary>The meaning of this member varies according to the request. For an explanation of this member, see the Universal Serial Bus (USB) specification.</Summary>
+        </member>
+        <member name="F:libusbK.WINUSB_SETUP_PACKET.Index">
+            <Summary>The meaning of this member varies according to the request. For an explanation of this member, see the Universal Serial Bus (USB) specification.</Summary>
+        </member>
+        <member name="F:libusbK.WINUSB_SETUP_PACKET.Length">
+            <Summary>The number of bytes to transfer. (not including the \c WINUSB_SETUP_PACKET itself)</Summary>
+        </member>
+        <member name="T:libusbK.KISO_PACKET">
+            <Summary>Structure describing an isochronous transfer packet.</Summary>
+        </member>
+        <member name="F:libusbK.KISO_PACKET.Offset">
+            <Summary>Specifies the offset, in bytes, of the buffer for this packet from the beginning of the entire isochronous transfer data buffer.</Summary>
+        </member>
+        <member name="F:libusbK.KISO_PACKET.Length">
+            <Summary>Set by the host controller to indicate the actual number of bytes received by the device for isochronous IN transfers. Length not used for isochronous OUT transfers.</Summary>
+        </member>
+        <member name="F:libusbK.KISO_PACKET.Status">
+            <Summary>Contains the 16 least significant USBD status bits, on return from the host controller driver, of this transfer packet.</Summary>
+        </member>
+        <member name="T:libusbK.KISO_CONTEXT.KISO_CONTEXT_MAP">
+            <summary>KISO_CONTEXT_MAP is used for calculating field offsets only</summary>
+        </member>
+        <member name="F:libusbK.KISO_CONTEXT.KISO_CONTEXT_MAP.Flags">
+            <Summary>Additional ISO transfer flags. See \ref KISO_FLAG.</Summary>
+        </member>
+        <member name="F:libusbK.KISO_CONTEXT.KISO_CONTEXT_MAP.StartFrame">
+            <Summary>Specifies the frame number that the transfer should begin on (0 for ASAP).</Summary>
+        </member>
+        <member name="F:libusbK.KISO_CONTEXT.KISO_CONTEXT_MAP.ErrorCount">
+            <Summary>Contains the number of packets that completed with an error condition on return from the host controller driver.</Summary>
+        </member>
+        <member name="F:libusbK.KISO_CONTEXT.KISO_CONTEXT_MAP.NumberOfPackets">
+            <Summary>Specifies the number of packets that are described by the variable-length array member \c IsoPacket.</Summary>
+        </member>
+        <member name="F:libusbK.KISO_CONTEXT.KISO_CONTEXT_MAP.UrbHdrStatus">
+            <Summary>Contains the URB Hdr.Status value on return from the host controller driver.</Summary>
+        </member>
+        <member name="P:libusbK.KISO_CONTEXT.Flags">
+            <Summary>Additional ISO transfer flags. See \ref KISO_FLAG.</Summary>
+        </member>
+        <member name="P:libusbK.KISO_CONTEXT.StartFrame">
+            <Summary>Specifies the frame number that the transfer should begin on (0 for ASAP).</Summary>
+        </member>
+        <member name="P:libusbK.KISO_CONTEXT.ErrorCount">
+            <Summary>Contains the number of packets that completed with an error condition on return from the host controller driver.</Summary>
+        </member>
+        <member name="P:libusbK.KISO_CONTEXT.NumberOfPackets">
+            <Summary>Specifies the number of packets that are described by the variable-length array member \c IsoPacket.</Summary>
+        </member>
+        <member name="P:libusbK.KISO_CONTEXT.UrbHdrStatus">
+            <Summary>Contains the URB Hdr.Status value on return from the host controller driver.</Summary>
+        </member>
+        <member name="T:libusbK.KLIB_VERSION">
+            <Summary>libusbK verson information structure.</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_VERSION.Major">
+            <Summary>Major version number.</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_VERSION.Minor">
+            <Summary>Minor version number.</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_VERSION.Micro">
+            <Summary>Micro version number.</Summary>
+        </member>
+        <member name="F:libusbK.KLIB_VERSION.Nano">
+            <Summary>Nano version number.</Summary>
+        </member>
+        <member name="T:libusbK.KLST_DEV_COMMON_INFO">
+            <Summary>Common usb device information structure</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEV_COMMON_INFO.Vid">
+            <Summary>VendorID parsed from \ref KLST_DEVINFO::DeviceID</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEV_COMMON_INFO.Pid">
+            <Summary>ProductID parsed from \ref KLST_DEVINFO::DeviceID</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEV_COMMON_INFO.MI">
+            <Summary>Composite interface number parsed from \ref KLST_DEVINFO::DeviceID.  Set to \b -1 for devices that do not have the composite parent driver.</Summary>
+        </member>
+        <member name="T:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP">
+            <summary>KLST_DEVINFO_MAP is used for calculating field offsets only</summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.Common">
+            <Summary>Common usb device information</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.DriverID">
+            <Summary>Driver id this device element is using</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.DeviceInterfaceGUID">
+            <Summary>Device interface GUID</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.DeviceID">
+            <Summary>Device instance ID.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.ClassGUID">
+            <Summary>Class GUID.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.Mfg">
+            <Summary>Manufacturer name as specified in the INF file.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.DeviceDesc">
+            <Summary>Device description as specified in the INF file.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.Service">
+            <Summary>Driver service name.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.SymbolicLink">
+            <Summary>Unique identifier.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.DevicePath">
+            <Summary>physical device filename used with the Windows \c CreateFile()</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.LUsb0FilterIndex">
+            <Summary>libusb-win32 filter index id.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.Connected">
+            <Summary>Indicates the devices connection state.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.SyncFlags">
+            <Summary>Synchronization flags. (internal use only)</Summary>
+        </member>
+        <member name="F:libusbK.KLST_DEVINFO_HANDLE.KLST_DEVINFO_MAP.SerialNumber">
+            <Summary>If the the device is serialized, represents the string value of \ref USB_DEVICE_DESCRIPTOR::iSerialNumber. For Devices without a \b iSerialNumber, represents the unique \b InstanceID assigned by \b Windows.</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.Common">
+            <Summary>Common usb device information</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.DriverID">
+            <Summary>Driver id this device element is using</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.DeviceInterfaceGUID">
+            <Summary>Device interface GUID</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.DeviceID">
+            <Summary>Device instance ID.</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.ClassGUID">
+            <Summary>Class GUID.</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.Mfg">
+            <Summary>Manufacturer name as specified in the INF file.</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.DeviceDesc">
+            <Summary>Device description as specified in the INF file.</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.Service">
+            <Summary>Driver service name.</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.SymbolicLink">
+            <Summary>Unique identifier.</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.DevicePath">
+            <Summary>physical device filename used with the Windows \c CreateFile()</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.LUsb0FilterIndex">
+            <Summary>libusb-win32 filter index id.</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.Connected">
+            <Summary>Indicates the devices connection state.</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.SyncFlags">
+            <Summary>Synchronization flags. (internal use only)</Summary>
+        </member>
+        <member name="P:libusbK.KLST_DEVINFO_HANDLE.SerialNumber">
+            <Summary>If the the device is serialized, represents the string value of \ref USB_DEVICE_DESCRIPTOR::iSerialNumber. For Devices without a \b iSerialNumber, represents the unique \b InstanceID assigned by \b Windows.</Summary>
+        </member>
+        <member name="T:libusbK.KLST_PATTERN_MATCH">
+            <Summary>Device list/hot-plug pattern match structure.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_PATTERN_MATCH.DeviceID">
+            <Summary>Pattern match a device instance id.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_PATTERN_MATCH.DeviceInterfaceGUID">
+            <Summary>Pattern match a device interface guid.</Summary>
+        </member>
+        <member name="F:libusbK.KLST_PATTERN_MATCH.ClassGUID">
+            <Summary>Pattern match a symbolic link.</Summary>
+        </member>
+        <member name="T:libusbK.USB_DEVICE_DESCRIPTOR">
+            <Summary>A structure representing the standard USB device descriptor.</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.bLength">
+            <Summary>Size of this descriptor (in bytes)</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.bDescriptorType">
+            <Summary>Descriptor type</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.bcdUSB">
+            <Summary>USB specification release number in binary-coded decimal.</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.bDeviceClass">
+            <Summary>USB-IF class code for the device</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.bDeviceSubClass">
+            <Summary>USB-IF subclass code for the device</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.bDeviceProtocol">
+            <Summary>USB-IF protocol code for the device</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.bMaxPacketSize0">
+            <Summary>Maximum packet size for control endpoint 0</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.idVendor">
+            <Summary>USB-IF vendor ID</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.idProduct">
+            <Summary>USB-IF product ID</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.bcdDevice">
+            <Summary>Device release number in binary-coded decimal</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.iManufacturer">
+            <Summary>Index of string descriptor describing manufacturer</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.iProduct">
+            <Summary>Index of string descriptor describing product</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.iSerialNumber">
+            <Summary>Index of string descriptor containing device serial number</Summary>
+        </member>
+        <member name="F:libusbK.USB_DEVICE_DESCRIPTOR.bNumConfigurations">
+            <Summary>Number of possible configurations</Summary>
+        </member>
+        <member name="T:libusbK.USB_ENDPOINT_DESCRIPTOR">
+            <Summary>A structure representing the standard USB endpoint descriptor.</Summary>
+        </member>
+        <member name="F:libusbK.USB_ENDPOINT_DESCRIPTOR.bLength">
+            <Summary>Size of this descriptor (in bytes)</Summary>
+        </member>
+        <member name="F:libusbK.USB_ENDPOINT_DESCRIPTOR.bDescriptorType">
+            <Summary>Descriptor type</Summary>
+        </member>
+        <member name="F:libusbK.USB_ENDPOINT_DESCRIPTOR.bEndpointAddress">
+            <Summary>The address of the endpoint described by this descriptor.</Summary>
+        </member>
+        <member name="F:libusbK.USB_ENDPOINT_DESCRIPTOR.bmAttributes">
+            <Summary>Attributes which apply to the endpoint when it is configured using the bConfigurationValue.</Summary>
+        </member>
+        <member name="F:libusbK.USB_ENDPOINT_DESCRIPTOR.wMaxPacketSize">
+            <Summary>Maximum packet size this endpoint is capable of sending/receiving.</Summary>
+        </member>
+        <member name="F:libusbK.USB_ENDPOINT_DESCRIPTOR.bInterval">
+            <Summary>Interval for polling endpoint for data transfers.</Summary>
+        </member>
+        <member name="T:libusbK.USB_CONFIGURATION_DESCRIPTOR">
+            <Summary>A structure representing the standard USB configuration descriptor.</Summary>
+        </member>
+        <member name="F:libusbK.USB_CONFIGURATION_DESCRIPTOR.bLength">
+            <Summary>Size of this descriptor (in bytes)</Summary>
+        </member>
+        <member name="F:libusbK.USB_CONFIGURATION_DESCRIPTOR.bDescriptorType">
+            <Summary>Descriptor type</Summary>
+        </member>
+        <member name="F:libusbK.USB_CONFIGURATION_DESCRIPTOR.wTotalLength">
+            <Summary>Total length of data returned for this configuration</Summary>
+        </member>
+        <member name="F:libusbK.USB_CONFIGURATION_DESCRIPTOR.bNumInterfaces">
+            <Summary>Number of interfaces supported by this configuration</Summary>
+        </member>
+        <member name="F:libusbK.USB_CONFIGURATION_DESCRIPTOR.bConfigurationValue">
+            <Summary>Identifier value for this configuration</Summary>
+        </member>
+        <member name="F:libusbK.USB_CONFIGURATION_DESCRIPTOR.iConfiguration">
+            <Summary>Index of string descriptor describing this configuration</Summary>
+        </member>
+        <member name="F:libusbK.USB_CONFIGURATION_DESCRIPTOR.bmAttributes">
+            <Summary>Configuration characteristics</Summary>
+        </member>
+        <member name="F:libusbK.USB_CONFIGURATION_DESCRIPTOR.MaxPower">
+            <Summary>Maximum power consumption of the USB device from this bus in this configuration when the device is fully operation.</Summary>
+        </member>
+        <member name="T:libusbK.USB_INTERFACE_DESCRIPTOR">
+            <Summary>A structure representing the standard USB interface descriptor.</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_DESCRIPTOR.bLength">
+            <Summary>Size of this descriptor (in bytes)</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_DESCRIPTOR.bDescriptorType">
+            <Summary>Descriptor type</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_DESCRIPTOR.bInterfaceNumber">
+            <Summary>Number of this interface</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_DESCRIPTOR.bAlternateSetting">
+            <Summary>Value used to select this alternate setting for this interface</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_DESCRIPTOR.bNumEndpoints">
+            <Summary>Number of endpoints used by this interface (excluding the control endpoint)</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_DESCRIPTOR.bInterfaceClass">
+            <Summary>USB-IF class code for this interface</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_DESCRIPTOR.bInterfaceSubClass">
+            <Summary>USB-IF subclass code for this interface</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_DESCRIPTOR.bInterfaceProtocol">
+            <Summary>USB-IF protocol code for this interface</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_DESCRIPTOR.iInterface">
+            <Summary>Index of string descriptor describing this interface</Summary>
+        </member>
+        <member name="T:libusbK.USB_STRING_DESCRIPTOR">
+            <Summary>A structure representing the standard USB string descriptor.</Summary>
+        </member>
+        <member name="F:libusbK.USB_STRING_DESCRIPTOR.bLength">
+            <Summary>Size of this descriptor (in bytes)</Summary>
+        </member>
+        <member name="F:libusbK.USB_STRING_DESCRIPTOR.bDescriptorType">
+            <Summary>Descriptor type</Summary>
+        </member>
+        <member name="F:libusbK.USB_STRING_DESCRIPTOR.bString">
+            <Summary>Content of the string</Summary>
+        </member>
+        <member name="T:libusbK.USB_COMMON_DESCRIPTOR">
+            <Summary>A structure representing the common USB descriptor.</Summary>
+        </member>
+        <member name="F:libusbK.USB_COMMON_DESCRIPTOR.bLength">
+            <Summary>Size of this descriptor (in bytes)</Summary>
+        </member>
+        <member name="F:libusbK.USB_COMMON_DESCRIPTOR.bDescriptorType">
+            <Summary>Descriptor type</Summary>
+        </member>
+        <member name="T:libusbK.USB_INTERFACE_ASSOCIATION_DESCRIPTOR">
+            <Summary>Allows hardware manufacturers to define groupings of interfaces.</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_ASSOCIATION_DESCRIPTOR.bLength">
+            <Summary>Size of this descriptor (in bytes)</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_ASSOCIATION_DESCRIPTOR.bDescriptorType">
+            <Summary>Descriptor type</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_ASSOCIATION_DESCRIPTOR.bFirstInterface">
+            <Summary>First interface number of the set of interfaces that follow this descriptor</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_ASSOCIATION_DESCRIPTOR.bInterfaceCount">
+            <Summary>The Number of interfaces follow this descriptor that are considered "associated"</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_ASSOCIATION_DESCRIPTOR.bFunctionClass">
+            <Summary>\c bInterfaceClass used for this associated interfaces</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_ASSOCIATION_DESCRIPTOR.bFunctionSubClass">
+            <Summary>\c bInterfaceSubClass used for the associated interfaces</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_ASSOCIATION_DESCRIPTOR.bFunctionProtocol">
+            <Summary>\c bInterfaceProtocol used for the associated interfaces</Summary>
+        </member>
+        <member name="F:libusbK.USB_INTERFACE_ASSOCIATION_DESCRIPTOR.iFunction">
+            <Summary>Index of string descriptor describing the associated interfaces</Summary>
+        </member>
+        <member name="T:libusbK.KUSB_DRIVER_API_INFO">
+            <Summary>USB core driver API information structure.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_DRIVER_API_INFO.DriverID">
+            <Summary>\readonly Driver id of the driver api.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_DRIVER_API_INFO.FunctionCount">
+            <Summary>\readonly Number of valid functions contained in the driver API.</Summary>
+        </member>
+        <member name="T:libusbK.KUSB_DRIVER_API">
+            <Summary>Driver API function set structure.</Summary>
+        </member>
+        <member name="F:libusbK.KUSB_DRIVER_API.Info">
+            <Summary>Driver API information.</Summary>
+        </member>
+        <member name="T:libusbK.KHOT_PARAMS">
+            <Summary>Hot plug parameter structure.</Summary>
+        </member>
+        <member name="F:libusbK.KHOT_PARAMS.UserHwnd">
+            <Summary>Hot plug event window handle to send/post messages when notifications occur.</Summary>
+        </member>
+        <member name="F:libusbK.KHOT_PARAMS.UserMessage">
+            <Summary>WM_USER message start offset used when sending/posting messages, See details.</Summary>
+        </member>
+        <member name="F:libusbK.KHOT_PARAMS.Flags">
+            <Summary>Additional init/config parameters</Summary>
+        </member>
+        <member name="F:libusbK.KHOT_PARAMS.PatternMatch">
+            <Summary>File pattern matches for restricting notifcations to a single/group or all supported usb devices.</Summary>
+        </member>
+        <member name="F:libusbK.KHOT_PARAMS.OnHotPlug">
+            <Summary>Hot plug event callback function invoked when notifications occur.</Summary>
+        </member>
+        <member name="T:libusbK.KSTM_XFER_CONTEXT.KSTM_XFER_CONTEXT_MAP">
+            <summary>KSTM_XFER_CONTEXT_MAP is used for calculating field offsets only</summary>
+        </member>
+        <member name="F:libusbK.KSTM_XFER_CONTEXT.KSTM_XFER_CONTEXT_MAP.Buffer">
+            <Summary>Internal stream buffer.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_XFER_CONTEXT.KSTM_XFER_CONTEXT_MAP.BufferSize">
+            <Summary>Size of internal stream buffer.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_XFER_CONTEXT.KSTM_XFER_CONTEXT_MAP.TransferLength">
+            <Summary>Number of bytes to write or number of bytes read.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_XFER_CONTEXT.KSTM_XFER_CONTEXT_MAP.UserState">
+            <Summary>User defined state.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_XFER_CONTEXT.Buffer">
+            <Summary>Internal stream buffer.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_XFER_CONTEXT.BufferSize">
+            <Summary>Size of internal stream buffer.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_XFER_CONTEXT.TransferLength">
+            <Summary>Number of bytes to write or number of bytes read.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_XFER_CONTEXT.UserState">
+            <Summary>User defined state.</Summary>
+        </member>
+        <member name="T:libusbK.KSTM_INFO.KSTM_INFO_MAP">
+            <summary>KSTM_INFO_MAP is used for calculating field offsets only</summary>
+        </member>
+        <member name="F:libusbK.KSTM_INFO.KSTM_INFO_MAP.UsbHandle">
+            <Summary>\ref KUSB_HANDLE this stream uses.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_INFO.KSTM_INFO_MAP.PipeID">
+            <Summary>This parameter corresponds to the bEndpointAddress field in the endpoint descriptor.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_INFO.KSTM_INFO_MAP.MaxPendingTransfers">
+            <Summary>Maximum transfer read/write request allowed pending.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_INFO.KSTM_INFO_MAP.MaxTransferSize">
+            <Summary>Maximum transfer sage size.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_INFO.KSTM_INFO_MAP.MaxPendingIO">
+            <Summary>Maximum number of I/O request allowed pending.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_INFO.KSTM_INFO_MAP.EndpointDescriptor">
+            <Summary>Populated with the endpoint descriptor for the specified \c PipeID.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_INFO.KSTM_INFO_MAP.DriverAPI">
+            <Summary>Populated with the driver api for the specified \c UsbHandle.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_INFO.KSTM_INFO_MAP.DeviceHandle">
+            <Summary>Populated with the device file handle for the specified \c UsbHandle.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_INFO.KSTM_INFO_MAP.StreamHandle">
+            <Summary>Stream handle.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_INFO.KSTM_INFO_MAP.UserState">
+            <Summary>Stream info user defined state.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_INFO.UsbHandle">
+            <Summary>\ref KUSB_HANDLE this stream uses.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_INFO.PipeID">
+            <Summary>This parameter corresponds to the bEndpointAddress field in the endpoint descriptor.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_INFO.MaxPendingTransfers">
+            <Summary>Maximum transfer read/write request allowed pending.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_INFO.MaxTransferSize">
+            <Summary>Maximum transfer sage size.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_INFO.MaxPendingIO">
+            <Summary>Maximum number of I/O request allowed pending.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_INFO.EndpointDescriptor">
+            <Summary>Populated with the endpoint descriptor for the specified \c PipeID.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_INFO.DriverAPI">
+            <Summary>Populated with the driver api for the specified \c UsbHandle.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_INFO.DeviceHandle">
+            <Summary>Populated with the device file handle for the specified \c UsbHandle.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_INFO.StreamHandle">
+            <Summary>Stream handle.</Summary>
+        </member>
+        <member name="P:libusbK.KSTM_INFO.UserState">
+            <Summary>Stream info user defined state.</Summary>
+        </member>
+        <member name="T:libusbK.KSTM_CALLBACK">
+            <Summary>Stream callback structure.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_CALLBACK.Error">
+            <Summary>Executed when a transfer error occurs.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_CALLBACK.Submit">
+            <Summary>Executed to submit a transfer.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_CALLBACK.Complete">
+            <Summary>Executed when a valid transfer completes.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_CALLBACK.Started">
+            <Summary>Executed for every transfer context when the stream is started with \ref StmK_Start.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_CALLBACK.Stopped">
+            <Summary>Executed for every transfer context when the stream is stopped with \ref StmK_Stop.</Summary>
+        </member>
+        <member name="F:libusbK.KSTM_CALLBACK.BeforeComplete">
+            <Summary>Executed immediately after a transfer completes.</Summary>
+        </member>
+        <member name="M:libusbK.LstK.Dispose">
+            <summary>Explicitly closes and frees the handle.</summary>
+        </member>
+        <member name="M:libusbK.LstK.Init(libusbK.KLST_FLAG)">
+            <Summary>Initializes a new usb device list containing all supported devices.</Summary>
+        </member>
+        <member name="M:libusbK.LstK.InitEx(libusbK.KLST_FLAG,libusbK.KLST_PATTERN_MATCH@)">
+            <Summary>Initializes a new usb device list containing only devices matching a specific class GUID.</Summary>
+        </member>
+        <member name="M:libusbK.LstK.#ctor(libusbK.KLST_FLAG)">
+            <Summary>Initializes a new usb device list containing all supported devices.</Summary>
+        </member>
+        <member name="M:libusbK.LstK.#ctor(libusbK.KLST_FLAG,libusbK.KLST_PATTERN_MATCH@)">
+            <Summary>Initializes a new usb device list containing only devices matching a specific class GUID.</Summary>
+        </member>
+        <member name="M:libusbK.LstK.Count(System.Int32@)">
+            <Summary>Counts the number of device info elements in a device list.</Summary>
+        </member>
+        <member name="M:libusbK.LstK.Current(libusbK.KLST_DEVINFO_HANDLE@)">
+            <Summary>Gets the \ref KLST_DEVINFO element for the current position.</Summary>
+        </member>
+        <member name="M:libusbK.LstK.Enumerate(libusbK.KLST_ENUM_DEVINFO_CB,System.IntPtr)">
+            <Summary>Enumerates \ref KLST_DEVINFO elements of a \ref KLST_HANDLE.</Summary>
+        </member>
+        <member name="M:libusbK.LstK.FindByVidPid(System.Int32,System.Int32,libusbK.KLST_DEVINFO_HANDLE@)">
+            <Summary>Find a device by vendor and product id</Summary>
+        </member>
+        <member name="M:libusbK.LstK.Free">
+            <summary>Calls the dispose method.</summary>
+        </member>
+        <member name="P:libusbK.LstK.Handle">
+            <summary>Gets the handle class structure.</summary>
+        </member>
+        <member name="M:libusbK.LstK.MoveNext(libusbK.KLST_DEVINFO_HANDLE@)">
+            <Summary>Advances the device list current \ref KLST_DEVINFO position.</Summary>
+        </member>
+        <member name="M:libusbK.LstK.MoveReset">
+            <Summary>Sets the device list to its initial position, which is before the first element in the list.</Summary>
+        </member>
+        <member name="M:libusbK.HotK.Dispose">
+            <summary>Explicitly closes and frees the handle.</summary>
+        </member>
+        <member name="M:libusbK.HotK.Init(libusbK.KHOT_PARAMS@)">
+            <Summary>Creates a new hot-plug handle for USB device arrival/removal event monitoring.</Summary>
+        </member>
+        <member name="M:libusbK.HotK.#ctor(libusbK.KHOT_PARAMS@)">
+            <Summary>Creates a new hot-plug handle for USB device arrival/removal event monitoring.</Summary>
+        </member>
+        <member name="M:libusbK.HotK.Free">
+            <summary>Calls the dispose method.</summary>
+        </member>
+        <member name="M:libusbK.HotK.FreeAll">
+            <Summary>Frees all hot-plug handles initialized with \ref HotK_Init.</Summary>
+        </member>
+        <member name="P:libusbK.HotK.Handle">
+            <summary>Gets the handle class structure.</summary>
+        </member>
+        <member name="M:libusbK.UsbK.Dispose">
+            <summary>Explicitly closes and frees the handle.</summary>
+        </member>
+        <member name="M:libusbK.UsbK.Init(libusbK.KLST_DEVINFO_HANDLE)">
+            <Summary>Creates/opens a libusbK interface handle from the device list. This is a preferred method.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.Initialize(System.IntPtr,libusbK.KUSB_DRVID)">
+            <Summary>Creates a libusbK handle for the device specified by a file handle.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.#ctor(libusbK.KLST_DEVINFO_HANDLE)">
+            <Summary>Creates/opens a libusbK interface handle from the device list. This is a preferred method.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.#ctor(System.IntPtr,libusbK.KUSB_DRVID)">
+            <Summary>Creates a libusbK handle for the device specified by a file handle.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.AbortPipe(System.Byte)">
+            <Summary>Aborts all of the pending transfers for a pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ClaimInterface(System.Byte,System.Boolean)">
+            <Summary>Claims the specified interface by number or index.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.Clone(libusbK.KUSB_HANDLE@)">
+            <Summary>Clones the specified interface handle.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ControlTransfer(libusbK.WINUSB_SETUP_PACKET,System.IntPtr,System.Int32,System.Int32@,System.IntPtr)">
+            <Summary>Transmits control data over a default control endpoint.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ControlTransfer(libusbK.WINUSB_SETUP_PACKET,System.Array,System.Int32,System.Int32@,System.IntPtr)">
+            <Summary>Transmits control data over a default control endpoint.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ControlTransfer(libusbK.WINUSB_SETUP_PACKET,System.Array,System.Int32,System.Int32@,libusbK.KOVL_HANDLE)">
+            <Summary>Transmits control data over a default control endpoint.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ControlTransfer(libusbK.WINUSB_SETUP_PACKET,System.IntPtr,System.Int32,System.Int32@,libusbK.KOVL_HANDLE)">
+            <Summary>Transmits control data over a default control endpoint.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.FlushPipe(System.Byte)">
+            <Summary>Discards any data that is cached in a pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.Free">
+            <summary>Calls the dispose method.</summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetAltInterface(System.Byte,System.Boolean,System.Byte@)">
+            <Summary>Gets the alternate setting for the specified interface.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetAssociatedInterface(System.Byte,libusbK.KUSB_HANDLE@)">
+            <Summary>Retrieves a handle for an associated interface.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetConfiguration(System.Byte@)">
+            <Summary>Gets the device current configuration number.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetCurrentAlternateSetting(System.Byte@)">
+            <Summary>Gets the current alternate interface setting for an interface.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetCurrentFrameNumber(System.Int32@)">
+            <Summary>Retrieves the current USB frame number.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetDescriptor(System.Byte,System.Byte,System.Int32,System.IntPtr,System.Int32,System.Int32@)">
+            <Summary>Gets the requested descriptor. This is a synchronous operation.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetDescriptor(System.Byte,System.Byte,System.Int32,System.Array,System.Int32,System.Int32@)">
+            <Summary>Gets the requested descriptor. This is a synchronous operation.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetOverlappedResult(System.IntPtr,System.Int32@,System.Boolean)">
+            <Summary>Retrieves the results of an overlapped operation on the specified libusbK handle.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetOverlappedResult(libusbK.KOVL_HANDLE,System.Int32@,System.Boolean)">
+            <Summary>Retrieves the results of an overlapped operation on the specified libusbK handle.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetPipePolicy(System.Byte,System.Int32,System.Int32@,System.IntPtr)">
+            <Summary>Gets the policy for a specific pipe (endpoint).</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetPipePolicy(System.Byte,System.Int32,System.Int32@,System.Array)">
+            <Summary>Gets the policy for a specific pipe (endpoint).</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetPowerPolicy(System.Int32,System.Int32@,System.IntPtr)">
+            <Summary>Gets the power policy for a device.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetPowerPolicy(System.Int32,System.Int32@,System.Array)">
+            <Summary>Gets the power policy for a device.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetProperty(libusbK.KUSB_PROPERTY,System.Int32@,System.IntPtr)">
+            <Summary>Gets a USB device (driver specific) property from usb handle.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.GetProperty(libusbK.KUSB_PROPERTY,System.Int32@,System.Array)">
+            <Summary>Gets a USB device (driver specific) property from usb handle.</Summary>
+        </member>
+        <member name="P:libusbK.UsbK.Handle">
+            <summary>Gets the handle class structure.</summary>
+        </member>
+        <member name="M:libusbK.UsbK.IsoReadPipe(System.Byte,System.IntPtr,System.Int32,System.IntPtr,libusbK.KISO_CONTEXT)">
+            <Summary>Reads from an isochronous pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.IsoReadPipe(System.Byte,System.Array,System.Int32,System.IntPtr,libusbK.KISO_CONTEXT)">
+            <Summary>Reads from an isochronous pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.IsoReadPipe(System.Byte,System.Array,System.Int32,libusbK.KOVL_HANDLE,libusbK.KISO_CONTEXT)">
+            <Summary>Reads from an isochronous pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.IsoReadPipe(System.Byte,System.IntPtr,System.Int32,libusbK.KOVL_HANDLE,libusbK.KISO_CONTEXT)">
+            <Summary>Reads from an isochronous pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.IsoWritePipe(System.Byte,System.IntPtr,System.Int32,System.IntPtr,libusbK.KISO_CONTEXT)">
+            <Summary>Writes to an isochronous pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.IsoWritePipe(System.Byte,System.Array,System.Int32,System.IntPtr,libusbK.KISO_CONTEXT)">
+            <Summary>Writes to an isochronous pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.IsoWritePipe(System.Byte,System.Array,System.Int32,libusbK.KOVL_HANDLE,libusbK.KISO_CONTEXT)">
+            <Summary>Writes to an isochronous pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.IsoWritePipe(System.Byte,System.IntPtr,System.Int32,libusbK.KOVL_HANDLE,libusbK.KISO_CONTEXT)">
+            <Summary>Writes to an isochronous pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.QueryDeviceInformation(System.Int32,System.Int32@,System.IntPtr)">
+            <Summary>Retrieves information about the physical device that is associated with a libusbK handle.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.QueryInterfaceSettings(System.Byte,libusbK.USB_INTERFACE_DESCRIPTOR@)">
+            <Summary>Retrieves the interface descriptor for the specified alternate interface settings for a particular interface handle.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.QueryPipe(System.Byte,System.Byte,libusbK.WINUSB_PIPE_INFORMATION@)">
+            <Summary>Retrieves information about a pipe that is associated with an interface.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ReadPipe(System.Byte,System.IntPtr,System.Int32,System.Int32@,System.IntPtr)">
+            <Summary>Reads data from the specified pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ReadPipe(System.Byte,System.Array,System.Int32,System.Int32@,System.IntPtr)">
+            <Summary>Reads data from the specified pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ReadPipe(System.Byte,System.Array,System.Int32,System.Int32@,libusbK.KOVL_HANDLE)">
+            <Summary>Reads data from the specified pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ReadPipe(System.Byte,System.IntPtr,System.Int32,System.Int32@,libusbK.KOVL_HANDLE)">
+            <Summary>Reads data from the specified pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ReleaseInterface(System.Byte,System.Boolean)">
+            <Summary>Releases the specified interface by number or index.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ResetDevice">
+            <Summary>Resets the usb device of the specified interface handle. (port cycle).</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.ResetPipe(System.Byte)">
+            <Summary>Resets the data toggle and clears the stall condition on a pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.SelectInterface(System.Byte,System.Boolean)">
+            <Summary>Selects the specified interface by number or index as the current interface.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.SetAltInterface(System.Byte,System.Boolean,System.Byte)">
+            <Summary>Sets the alternate setting of the specified interface.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.SetConfiguration(System.Byte)">
+            <Summary>Sets the device configuration number.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.SetCurrentAlternateSetting(System.Byte)">
+            <Summary>Sets the alternate setting of an interface.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.SetPipePolicy(System.Byte,System.Int32,System.Int32,System.IntPtr)">
+            <Summary>Sets the policy for a specific pipe associated with an endpoint on the device. This is a synchronous operation.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.SetPipePolicy(System.Byte,System.Int32,System.Int32,System.Array)">
+            <Summary>Sets the policy for a specific pipe associated with an endpoint on the device. This is a synchronous operation.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.SetPowerPolicy(System.Int32,System.Int32,System.IntPtr)">
+            <Summary>Sets the power policy for a device.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.SetPowerPolicy(System.Int32,System.Int32,System.Array)">
+            <Summary>Sets the power policy for a device.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.WritePipe(System.Byte,System.IntPtr,System.Int32,System.Int32@,System.IntPtr)">
+            <Summary>Writes data to a pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.WritePipe(System.Byte,System.Array,System.Int32,System.Int32@,System.IntPtr)">
+            <Summary>Writes data to a pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.WritePipe(System.Byte,System.Array,System.Int32,System.Int32@,libusbK.KOVL_HANDLE)">
+            <Summary>Writes data to a pipe.</Summary>
+        </member>
+        <member name="M:libusbK.UsbK.WritePipe(System.Byte,System.IntPtr,System.Int32,System.Int32@,libusbK.KOVL_HANDLE)">
+            <Summary>Writes data to a pipe.</Summary>
+        </member>
+        <member name="M:libusbK.OvlK.Dispose">
+            <summary>Explicitly closes and frees the handle.</summary>
+        </member>
+        <member name="M:libusbK.OvlK.Init(libusbK.KUSB_HANDLE,System.Int32,libusbK.KOVL_POOL_FLAG)">
+            <Summary>Creates a new overlapped pool.</Summary>
+        </member>
+        <member name="M:libusbK.OvlK.#ctor(libusbK.KUSB_HANDLE,System.Int32,libusbK.KOVL_POOL_FLAG)">
+            <Summary>Creates a new overlapped pool.</Summary>
+        </member>
+        <member name="M:libusbK.OvlK.Acquire(libusbK.KOVL_HANDLE@)">
+            <Summary>Gets a preallocated \c OverlappedK structure from the specified/default pool.</Summary>
+        </member>
+        <member name="M:libusbK.OvlK.Free">
+            <summary>Calls the dispose method.</summary>
+        </member>
+        <member name="M:libusbK.OvlK.GetEventHandle(libusbK.KOVL_HANDLE)">
+            <Summary>Returns the internal event handle used to signal IO operations.</Summary>
+        </member>
+        <member name="P:libusbK.OvlK.Handle">
+            <summary>Gets the handle class structure.</summary>
+        </member>
+        <member name="M:libusbK.OvlK.IsComplete(libusbK.KOVL_HANDLE)">
+            <Summary>Checks for i/o completion; returns immediately. (polling)</Summary>
+        </member>
+        <member name="M:libusbK.OvlK.ReUse(libusbK.KOVL_HANDLE)">
+            <Summary>Initializes an overlappedK for re-use. The overlappedK is not return to its pool.</Summary>
+        </member>
+        <member name="M:libusbK.OvlK.Release(libusbK.KOVL_HANDLE)">
+            <Summary>Returns an \c OverlappedK structure to it's pool.</Summary>
+        </member>
+        <member name="M:libusbK.OvlK.Wait(libusbK.KOVL_HANDLE,System.Int32,libusbK.KOVL_WAIT_FLAG,System.Int32@)">
+            <Summary>Waits for overlapped I/O completion, and performs actions specified in \c WaitFlags.</Summary>
+        </member>
+        <member name="M:libusbK.OvlK.WaitAndRelease(libusbK.KOVL_HANDLE,System.Int32,System.Int32@)">
+            <Summary>Waits for overlapped I/O completion, cancels on a timeout error and always releases the OvlK handle back to its pool.</Summary>
+        </member>
+        <member name="M:libusbK.OvlK.WaitOldest(libusbK.KOVL_HANDLE@,System.Int32,libusbK.KOVL_WAIT_FLAG,System.Int32@)">
+            <Summary>Waits for overlapped I/O completion on the oldest acquired OverlappedK handle and performs actions specified in \c WaitFlags.</Summary>
+        </member>
+        <member name="M:libusbK.OvlK.WaitOrCancel(libusbK.KOVL_HANDLE,System.Int32,System.Int32@)">
+            <Summary>Waits for overlapped I/O completion, cancels on a timeout error.</Summary>
+        </member>
+        <member name="M:libusbK.StmK.Dispose">
+            <summary>Explicitly closes and frees the handle.</summary>
+        </member>
+        <member name="M:libusbK.StmK.Init(libusbK.KUSB_HANDLE,System.Byte,System.Int32,System.Int32,System.Int32,libusbK.KSTM_CALLBACK@,libusbK.KSTM_FLAG)">
+            <Summary>Initializes a new uni-directional pipe stream.</Summary>
+        </member>
+        <member name="M:libusbK.StmK.#ctor(libusbK.KUSB_HANDLE,System.Byte,System.Int32,System.Int32,System.Int32,libusbK.KSTM_CALLBACK@,libusbK.KSTM_FLAG)">
+            <Summary>Initializes a new uni-directional pipe stream.</Summary>
+        </member>
+        <member name="M:libusbK.StmK.Free">
+            <summary>Calls the dispose method.</summary>
+        </member>
+        <member name="P:libusbK.StmK.Handle">
+            <summary>Gets the handle class structure.</summary>
+        </member>
+        <member name="M:libusbK.StmK.Read(System.IntPtr,System.Int32,System.Int32,System.Int32@)">
+            <Summary>Reads data from the stream buffer.</Summary>
+        </member>
+        <member name="M:libusbK.StmK.Read(System.Array,System.Int32,System.Int32,System.Int32@)">
+            <Summary>Reads data from the stream buffer.</Summary>
+        </member>
+        <member name="M:libusbK.StmK.Start">
+            <Summary>Starts the internal stream thread.</Summary>
+        </member>
+        <member name="M:libusbK.StmK.Stop(System.Int32)">
+            <Summary>Stops the internal stream thread.</Summary>
+        </member>
+        <member name="M:libusbK.StmK.Write(System.IntPtr,System.Int32,System.Int32,System.Int32@)">
+            <Summary>Writes data to the stream buffer.</Summary>
+        </member>
+        <member name="M:libusbK.StmK.Write(System.Array,System.Int32,System.Int32,System.Int32@)">
+            <Summary>Writes data to the stream buffer.</Summary>
+        </member>
+        <member name="M:libusbK.IsoK.Dispose">
+            <summary>Explicitly closes and frees the handle.</summary>
+        </member>
+        <member name="M:libusbK.IsoK.Init(System.Int32,System.Int32)">
+            <Summary>Creates a new isochronous transfer context.</Summary>
+        </member>
+        <member name="F:libusbK.IsoK.KISO_CONTEXT_MAP.Flags">
+            <Summary>Additional ISO transfer flags. See \ref KISO_FLAG.</Summary>
+        </member>
+        <member name="F:libusbK.IsoK.KISO_CONTEXT_MAP.StartFrame">
+            <Summary>Specifies the frame number that the transfer should begin on (0 for ASAP).</Summary>
+        </member>
+        <member name="F:libusbK.IsoK.KISO_CONTEXT_MAP.ErrorCount">
+            <Summary>Contains the number of packets that completed with an error condition on return from the host controller driver.</Summary>
+        </member>
+        <member name="F:libusbK.IsoK.KISO_CONTEXT_MAP.NumberOfPackets">
+            <Summary>Specifies the number of packets that are described by the variable-length array member \c IsoPacket.</Summary>
+        </member>
+        <member name="F:libusbK.IsoK.KISO_CONTEXT_MAP.UrbHdrStatus">
+            <Summary>Contains the URB Hdr.Status value on return from the host controller driver.</Summary>
+        </member>
+        <member name="M:libusbK.IsoK.#ctor(System.Int32,System.Int32)">
+            <Summary>Creates a new isochronous transfer context.</Summary>
+        </member>
+        <member name="M:libusbK.IsoK.EnumPackets(libusbK.KISO_ENUM_PACKETS_CB,System.Int32,System.IntPtr)">
+            <Summary>Convenience function for enumerating ISO packets of an isochronous transfer context.</Summary>
+        </member>
+        <member name="P:libusbK.IsoK.ErrorCount">
+            <Summary>Contains the number of packets that completed with an error condition on return from the host controller driver.</Summary>
+        </member>
+        <member name="P:libusbK.IsoK.Flags">
+            <Summary>Additional ISO transfer flags. See \ref KISO_FLAG.</Summary>
+        </member>
+        <member name="M:libusbK.IsoK.Free">
+            <summary>Calls the dispose method.</summary>
+        </member>
+        <member name="M:libusbK.IsoK.GetPacket(System.Int32,libusbK.KISO_PACKET@)">
+            <Summary>Convenience function for getting all fields of a \ref KISO_PACKET.</Summary>
+        </member>
+        <member name="P:libusbK.IsoK.Handle">
+            <summary>Gets the handle class structure.</summary>
+        </member>
+        <member name="P:libusbK.IsoK.NumberOfPackets">
+            <Summary>Specifies the number of packets that are described by the variable-length array member \c IsoPacket.</Summary>
+        </member>
+        <member name="M:libusbK.IsoK.ReUse">
+            <Summary>Convenience function for re-using an isochronous transfer context in a subsequent request.</Summary>
+        </member>
+        <member name="M:libusbK.IsoK.SetPacket(System.Int32,libusbK.KISO_PACKET@)">
+            <Summary>Convenience function for setting all fields of a \ref KISO_PACKET.</Summary>
+        </member>
+        <member name="M:libusbK.IsoK.SetPackets(System.Int32)">
+            <Summary>Convenience function for setting the offset of all ISO packets of an isochronous transfer context.</Summary>
+        </member>
+        <member name="P:libusbK.IsoK.StartFrame">
+            <Summary>Specifies the frame number that the transfer should begin on (0 for ASAP).</Summary>
+        </member>
+        <member name="P:libusbK.IsoK.UrbHdrStatus">
+            <Summary>Contains the URB Hdr.Status value on return from the host controller driver.</Summary>
+        </member>
+        <member name="T:LumaGlobal.LumaInfo">
+            <summary>
+            A static class providing information about the library.
+            </summary>
+        </member>
+        <member name="F:LumaGlobal.LumaInfo.PLATFORMTARGETSTR_ANYCPU">
+            <summary>
+            One string possibly returned by the PLATFORMTARGET property. Use for comparison with the value returned by the property.
+            </summary>
+        </member>
+        <member name="F:LumaGlobal.LumaInfo.PLATFORMTARGETSTR_X86">
+            <summary>
+            One string possibly returned by the PLATFORMTARGET property. Use for comparison with the value returned by the property.
+            </summary>
+        </member>
+        <member name="F:LumaGlobal.LumaInfo.PLATFORMTARGETSTR_X64">
+            <summary>
+            One string possibly returned by the PLATFORMTARGET property. Use for comparison with the value returned by the property.
+            </summary>
+        </member>
+        <member name="F:LumaGlobal.LumaInfo.PLATFORMTARGETSTR_UNKNOWN">
+            <summary>
+            One string possibly returned by the PLATFORMTARGET property. Use for comparison with the value returned by the property.
+            </summary>
+        </member>
+        <member name="P:LumaGlobal.LumaInfo.PLATFORMTARGET">
+            <summary>
+            Returns a string indicating the build target used at the time the DLL was compiled.
+            Use this to confirm the correct DLL version for a project.
+            Returns PLATFORMTARGETSTR_UNKNOWN if the target was other than AnyCPU, x86, or x64.
+            </summary>
+        </member>
+    </members>
+</doc>

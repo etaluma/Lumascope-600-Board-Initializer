@@ -6,19 +6,23 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.config	# Added so that we can have *.DLL and *.EXE in GitHub but not this type.
+*.xml		# Added so that we can have *.DLL and *.EXE in GitHub but not this type.
+
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
 # Build results
-[Dd]ebug/
+#[Dd]ebug/		# Commented out so that we can have *.DLL and *.EXE in GitHub.
 [Dd]ebugPublic/
-[Rr]elease/
+#[Rr]elease/		# Commented out so that we can have *.DLL and *.EXE in GitHub.
 [Rr]eleases/
 x64/
 x86/
 bld/
-[Bb]in/
+#[Bb]in/		# Commented out so that we can have *.DLL and *.EXE in GitHub.
 [Oo]bj/
 [Ll]og/
 
